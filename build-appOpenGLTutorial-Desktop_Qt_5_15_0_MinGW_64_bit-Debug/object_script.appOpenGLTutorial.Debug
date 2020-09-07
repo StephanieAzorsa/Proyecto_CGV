@@ -1,0 +1,10 @@
+debug/main.o
+debug/model.o
+debug/modelimporter.o
+debug/scene.o
+debug/sphere.o
+debug/triangle.o
+debug/utils.o
+debug/widget.o
+debug/qrc_shaders.o
+debug/moc_widget.o
