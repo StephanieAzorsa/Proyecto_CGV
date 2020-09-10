@@ -15,7 +15,7 @@ Triangle::Triangle( QOpenGLShaderProgram *program,
 
 void Triangle::draw()
 {
-    QOpenGLFunctions_4_3_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_3_Core>();
+    QOpenGLFunctions_4_0_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_0_Core>();
 
     m_program->setAttributeArray( m_vertexAttr, m_vertices.data(), 3 );
     m_program->setAttributeArray( m_colorAttr, m_colors.data(), 3 );

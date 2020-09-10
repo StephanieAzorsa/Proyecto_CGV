@@ -17,7 +17,7 @@ string Utils::readShaderFile(const char* filePath) {
 }
 
 bool Utils::checkOpenGLError() {
-    QOpenGLFunctions_4_3_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_3_Core>();
+    QOpenGLFunctions_4_0_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_0_Core>();
     bool foundError = false;
     int glErr = f->glGetError();
     while (glErr != GL_NO_ERROR) {
@@ -29,7 +29,7 @@ bool Utils::checkOpenGLError() {
 }
 
 void Utils::printShaderLog(GLuint shader) {
-     QOpenGLFunctions_4_3_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_3_Core>();
+     QOpenGLFunctions_4_0_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_0_Core>();
     int len = 0;
     int chWrittn = 0;
     char* log;
@@ -44,7 +44,7 @@ void Utils::printShaderLog(GLuint shader) {
 
 GLuint Utils::prepareShader(int shaderTYPE, const char* shaderPath)
 {
-    QOpenGLFunctions_4_3_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_3_Core>();
+    QOpenGLFunctions_4_0_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_0_Core>();
     GLint shaderCompiled;
     string shaderStr = readShaderFile(shaderPath);
     const char* shaderSrc = shaderStr.c_str();
@@ -67,7 +67,7 @@ GLuint Utils::prepareShader(int shaderTYPE, const char* shaderPath)
 }
 
 void Utils::printProgramLog(int prog) {
-     QOpenGLFunctions_4_3_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_3_Core>();
+     QOpenGLFunctions_4_0_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_0_Core>();
     int len = 0;
     int chWrittn = 0;
     char* log;
@@ -82,7 +82,7 @@ void Utils::printProgramLog(int prog) {
 
 int Utils::finalizeShaderProgram(GLuint sprogram)
 {
-     QOpenGLFunctions_4_3_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_3_Core>();
+     QOpenGLFunctions_4_0_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_0_Core>();
     GLint linked;
      f->glLinkProgram(sprogram);
     checkOpenGLError();
@@ -96,7 +96,7 @@ int Utils::finalizeShaderProgram(GLuint sprogram)
 }
 
 GLuint Utils::createShaderProgram(const char* vp, const char* fp) {
-     QOpenGLFunctions_4_3_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_3_Core>();
+     QOpenGLFunctions_4_0_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_0_Core>();
     GLuint vShader = prepareShader(GL_VERTEX_SHADER, vp);
     GLuint fShader = prepareShader(GL_FRAGMENT_SHADER, fp);
     GLuint vfprogram =  f->glCreateProgram();
@@ -107,7 +107,7 @@ GLuint Utils::createShaderProgram(const char* vp, const char* fp) {
 }
 
 GLuint Utils::createShaderProgram(const char* vp, const char* gp, const char* fp) {
-    QOpenGLFunctions_4_3_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_3_Core>();
+    QOpenGLFunctions_4_0_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_0_Core>();
     GLuint vShader = prepareShader(GL_VERTEX_SHADER, vp);
     GLuint gShader = prepareShader(GL_GEOMETRY_SHADER, gp);
     GLuint fShader = prepareShader(GL_FRAGMENT_SHADER, fp);
@@ -120,7 +120,7 @@ GLuint Utils::createShaderProgram(const char* vp, const char* gp, const char* fp
 }
 
 GLuint Utils::createShaderProgram(const char* vp, const char* tCS, const char* tES, const char* fp) {
-     QOpenGLFunctions_4_3_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_3_Core>();
+     QOpenGLFunctions_4_0_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_0_Core>();
     GLuint vShader = prepareShader(GL_VERTEX_SHADER, vp);
     GLuint tcShader = prepareShader(GL_TESS_CONTROL_SHADER, tCS);
     GLuint teShader = prepareShader(GL_TESS_EVALUATION_SHADER, tES);
@@ -135,7 +135,7 @@ GLuint Utils::createShaderProgram(const char* vp, const char* tCS, const char* t
 }
 
 GLuint Utils::createShaderProgram(const char* vp, const char* tCS, const char* tES, char* gp, const char* fp) {
-    QOpenGLFunctions_4_3_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_3_Core>();
+    QOpenGLFunctions_4_0_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_0_Core>();
     GLuint vShader = prepareShader(GL_VERTEX_SHADER, vp);
     GLuint tcShader = prepareShader(GL_TESS_CONTROL_SHADER, tCS);
     GLuint teShader = prepareShader(GL_TESS_EVALUATION_SHADER, tES);

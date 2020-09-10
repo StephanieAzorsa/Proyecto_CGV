@@ -6,7 +6,7 @@
 #include "Triangle.h"
 #include <QWidget>
 #include <QOpenGLWidget>
-#include <QOpenGLFunctions_4_3_Core>
+#include <QOpenGLFunctions_4_0_Core>
 #include <QOpenGLContext>
 #include <QOpenGLBuffer>
 #include <QOpenGLVertexArrayObject>

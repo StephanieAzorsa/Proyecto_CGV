@@ -4,7 +4,7 @@
 #include <vector>
 #include <QWidget>
 #include <QOpenGLWidget>
-#include <QOpenGLFunctions_4_3_Core>
+#include <QOpenGLFunctions_4_0_Core>
 #include <QOpenGLContext>
 #include <QOpenGLShaderProgram>
 #include <QOpenGLBuffer>

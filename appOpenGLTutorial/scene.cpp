@@ -23,7 +23,7 @@ void Scene::initializeGL()
     //Esta clase es un contenedor para funciones del perfil principal de OpenGL 4.3
     //Devuelve un puntero a un objeto que proporciona acceso a todas las funciones
     //para la versión y perfil en el contexto actual(currentContext).
-    QOpenGLFunctions_4_3_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_3_Core>();
+    QOpenGLFunctions_4_0_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_0_Core>();
 
     //f-> es un operador para el acceso de miembros de un objeto,
     //    en este caso se esta accediendo a funciones de OpenGl 4.3
@@ -97,7 +97,7 @@ void Scene::initializeGL()
 //Renderiza las imágenes o formas
 void Scene::paintGL()
 {
-    QOpenGLFunctions_4_3_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_3_Core>();
+    QOpenGLFunctions_4_0_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_0_Core>();
     f->glClear( GL_COLOR_BUFFER_BIT );
 
     //bind: vincula el programa de shader al contexto actual, y lo convierte al porgrama de shader actual
@@ -130,7 +130,7 @@ void Scene::paintGL()
 //Sirve para configurar las matrices de transformación y otros recursos dependientes del tamaño de la ventana
 void Scene::resizeGL( int w, int h )
 {
-    QOpenGLFunctions_4_3_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_3_Core>();
+    QOpenGLFunctions_4_0_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_0_Core>();
 
     f->glViewport( 0, 0, w, h ); //Marca la región sobre la cual se quiere dibujar nuestras formas
     //Tiene como parámetro las dimensiones de la ventada donde se va a dibujar diferentes escenas de un mismo objeto

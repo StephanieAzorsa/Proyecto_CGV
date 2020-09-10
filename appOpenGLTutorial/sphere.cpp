@@ -57,8 +57,8 @@ void Sphere::init(int prec) {
 
 int Sphere::getNumVertices() { return numVertices; }
 int Sphere::getNumIndices() { return numIndices; }
-std::vector<int> Sphere::getIndices() { return indices; }
-std::vector<QVector3D> Sphere::getVertices() { return vertices; }
-std::vector<QVector2D> Sphere::getTexCoords() { return texCoords; }
-std::vector<QVector3D> Sphere::getNormals() { return normals; }
-std::vector<QVector3D> Sphere::getTangents() { return tangents; }
+vector<int> Sphere::getIndices() { return indices; }
+vector<QVector3D> Sphere::getVertices() { return vertices; }
+vector<QVector2D> Sphere::getTexCoords() { return texCoords; }
+vector<QVector3D> Sphere::getNormals() { return normals; }
+vector<QVector3D> Sphere::getTangents() { return tangents; }
