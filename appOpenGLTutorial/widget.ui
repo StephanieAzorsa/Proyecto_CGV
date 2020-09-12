@@ -26,10 +26,10 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>590</x>
-     <y>330</y>
-     <width>171</width>
-     <height>201</height>
+     <x>600</x>
+     <y>310</y>
+     <width>181</width>
+     <height>243</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="vlaoRotation">
@@ -186,6 +186,9 @@
         </item>
         <item>
          <widget class="QSlider" name="hsldRotateZ">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
           <property name="minimum">
            <number>-359</number>
           </property>
@@ -201,14 +204,71 @@
       </item>
      </layout>
     </item>
+    <item>
+     <layout class="QVBoxLayout" name="vlaoScale">
+      <item>
+       <widget class="QLabel" name="label_9">
+        <property name="font">
+         <font>
+          <family>Consolas</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Scale</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_12">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <item>
+           <widget class="QLabel" name="label_SX">
+            <property name="font">
+             <font>
+              <family>Consolas</family>
+              <pointsize>9</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>10</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSlider" name="hsldScale">
+            <property name="minimum">
+             <number>3</number>
+            </property>
+            <property name="maximum">
+             <number>60</number>
+            </property>
+            <property name="value">
+             <number>10</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
    </layout>
   </widget>
   <widget class="QWidget" name="layoutWidget_2">
    <property name="geometry">
     <rect>
      <x>600</x>
-     <y>140</y>
-     <width>151</width>
+     <y>30</y>
+     <width>181</width>
      <height>157</height>
     </rect>
    </property>
@@ -308,6 +368,91 @@
     </item>
    </layout>
   </widget>
+  <widget class="QWidget" name="layoutWidget_3">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>200</y>
+     <width>181</width>
+     <height>102</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="vlaoSegments">
+    <item>
+     <layout class="QVBoxLayout" name="vlaoSegmentX">
+      <item>
+       <widget class="QLabel" name="label_10">
+        <property name="font">
+         <font>
+          <family>Consolas</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Segments X</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="vlaoSegmentY">
+      <item>
+       <widget class="QLabel" name="label_12">
+        <property name="font">
+         <font>
+          <family>Consolas</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Segments Y</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_9">
+        <item>
+         <widget class="QLabel" name="label_SY">
+          <property name="font">
+           <font>
+            <family>Consolas</family>
+            <pointsize>9</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>10</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSlider" name="hsldSegmentY">
+          <property name="minimum">
+           <number>3</number>
+          </property>
+          <property name="maximum">
+           <number>60</number>
+          </property>
+          <property name="value">
+           <number>10</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
  </widget>
  <customwidgets>
   <customwidget>
@@ -325,12 +470,12 @@
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>633</x>
-     <y>163</y>
+     <x>659</x>
+     <y>360</y>
     </hint>
     <hint type="destinationlabel">
      <x>609</x>
-     <y>163</y>
+     <y>360</y>
     </hint>
    </hints>
   </connection>
@@ -341,12 +486,12 @@
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>644</x>
-     <y>212</y>
+     <x>670</x>
+     <y>413</y>
     </hint>
     <hint type="destinationlabel">
-     <x>608</x>
-     <y>216</y>
+     <x>609</x>
+     <y>413</y>
     </hint>
    </hints>
   </connection>
@@ -357,12 +502,44 @@
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>634</x>
-     <y>264</y>
+     <x>660</x>
+     <y>466</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>609</x>
+     <y>466</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>hsldSegmentY</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label_SY</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>629</x>
+     <y>288</y>
     </hint>
     <hint type="destinationlabel">
      <x>607</x>
-     <y>266</y>
+     <y>287</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>hsldScale</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label_SX</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>644</x>
+     <y>238</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>606</x>
+     <y>234</y>
     </hint>
    </hints>
   </connection>

@@ -43,6 +43,12 @@ public:
     QHBoxLayout *horizontalLayout_3;
     QLabel *label_7;
     QSlider *hsldRotateZ;
+    QVBoxLayout *vlaoScale;
+    QLabel *label_9;
+    QHBoxLayout *horizontalLayout_12;
+    QHBoxLayout *horizontalLayout_5;
+    QLabel *label_SX;
+    QSlider *hsldScale;
     QWidget *layoutWidget_2;
     QVBoxLayout *vlaoShapes;
     QLabel *label_8;
@@ -61,6 +67,15 @@ public:
     QVBoxLayout *vlaoSpecial;
     QHBoxLayout *horizontalLayout_10;
     QRadioButton *rbtn_Special;
+    QWidget *layoutWidget_3;
+    QVBoxLayout *vlaoSegments;
+    QVBoxLayout *vlaoSegmentX;
+    QLabel *label_10;
+    QVBoxLayout *vlaoSegmentY;
+    QLabel *label_12;
+    QHBoxLayout *horizontalLayout_9;
+    QLabel *label_SY;
+    QSlider *hsldSegmentY;
 
     void setupUi(QWidget *Widget)
     {
@@ -72,7 +87,7 @@ public:
         viewOpenGL->setGeometry(QRect(40, 40, 500, 500));
         layoutWidget = new QWidget(Widget);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(590, 330, 171, 201));
+        layoutWidget->setGeometry(QRect(600, 310, 181, 243));
         vlaoRotation = new QVBoxLayout(layoutWidget);
         vlaoRotation->setObjectName(QString::fromUtf8("vlaoRotation"));
         vlaoRotation->setContentsMargins(0, 0, 0, 0);
@@ -175,6 +190,7 @@ public:
 
         hsldRotateZ = new QSlider(layoutWidget);
         hsldRotateZ->setObjectName(QString::fromUtf8("hsldRotateZ"));
+        hsldRotateZ->setEnabled(true);
         hsldRotateZ->setMinimum(-359);
         hsldRotateZ->setMaximum(359);
         hsldRotateZ->setOrientation(Qt::Horizontal);
@@ -187,9 +203,46 @@ public:
 
         vlaoRotation->addLayout(vlaoRotationZ);
 
+        vlaoScale = new QVBoxLayout();
+        vlaoScale->setObjectName(QString::fromUtf8("vlaoScale"));
+        label_9 = new QLabel(layoutWidget);
+        label_9->setObjectName(QString::fromUtf8("label_9"));
+        label_9->setFont(font1);
+        label_9->setAlignment(Qt::AlignCenter);
+
+        vlaoScale->addWidget(label_9);
+
+        horizontalLayout_12 = new QHBoxLayout();
+        horizontalLayout_12->setObjectName(QString::fromUtf8("horizontalLayout_12"));
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
+        label_SX = new QLabel(layoutWidget);
+        label_SX->setObjectName(QString::fromUtf8("label_SX"));
+        label_SX->setFont(font2);
+
+        horizontalLayout_5->addWidget(label_SX);
+
+        hsldScale = new QSlider(layoutWidget);
+        hsldScale->setObjectName(QString::fromUtf8("hsldScale"));
+        hsldScale->setMinimum(3);
+        hsldScale->setMaximum(60);
+        hsldScale->setValue(10);
+        hsldScale->setOrientation(Qt::Horizontal);
+
+        horizontalLayout_5->addWidget(hsldScale);
+
+
+        horizontalLayout_12->addLayout(horizontalLayout_5);
+
+
+        vlaoScale->addLayout(horizontalLayout_12);
+
+
+        vlaoRotation->addLayout(vlaoScale);
+
         layoutWidget_2 = new QWidget(Widget);
         layoutWidget_2->setObjectName(QString::fromUtf8("layoutWidget_2"));
-        layoutWidget_2->setGeometry(QRect(600, 140, 151, 157));
+        layoutWidget_2->setGeometry(QRect(600, 30, 181, 157));
         vlaoShapes = new QVBoxLayout(layoutWidget_2);
         vlaoShapes->setObjectName(QString::fromUtf8("vlaoShapes"));
         vlaoShapes->setContentsMargins(0, 0, 0, 0);
@@ -275,11 +328,63 @@ public:
 
         vlaoShapes->addLayout(vlaoSpecial);
 
+        layoutWidget_3 = new QWidget(Widget);
+        layoutWidget_3->setObjectName(QString::fromUtf8("layoutWidget_3"));
+        layoutWidget_3->setGeometry(QRect(600, 200, 181, 102));
+        vlaoSegments = new QVBoxLayout(layoutWidget_3);
+        vlaoSegments->setObjectName(QString::fromUtf8("vlaoSegments"));
+        vlaoSegments->setContentsMargins(0, 0, 0, 0);
+        vlaoSegmentX = new QVBoxLayout();
+        vlaoSegmentX->setObjectName(QString::fromUtf8("vlaoSegmentX"));
+        label_10 = new QLabel(layoutWidget_3);
+        label_10->setObjectName(QString::fromUtf8("label_10"));
+        label_10->setFont(font1);
+        label_10->setAlignment(Qt::AlignCenter);
+
+        vlaoSegmentX->addWidget(label_10);
+
+
+        vlaoSegments->addLayout(vlaoSegmentX);
+
+        vlaoSegmentY = new QVBoxLayout();
+        vlaoSegmentY->setObjectName(QString::fromUtf8("vlaoSegmentY"));
+        label_12 = new QLabel(layoutWidget_3);
+        label_12->setObjectName(QString::fromUtf8("label_12"));
+        label_12->setFont(font1);
+        label_12->setAlignment(Qt::AlignCenter);
+
+        vlaoSegmentY->addWidget(label_12);
+
+        horizontalLayout_9 = new QHBoxLayout();
+        horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
+        label_SY = new QLabel(layoutWidget_3);
+        label_SY->setObjectName(QString::fromUtf8("label_SY"));
+        label_SY->setFont(font2);
+
+        horizontalLayout_9->addWidget(label_SY);
+
+        hsldSegmentY = new QSlider(layoutWidget_3);
+        hsldSegmentY->setObjectName(QString::fromUtf8("hsldSegmentY"));
+        hsldSegmentY->setMinimum(3);
+        hsldSegmentY->setMaximum(60);
+        hsldSegmentY->setValue(10);
+        hsldSegmentY->setOrientation(Qt::Horizontal);
+
+        horizontalLayout_9->addWidget(hsldSegmentY);
+
+
+        vlaoSegmentY->addLayout(horizontalLayout_9);
+
+
+        vlaoSegments->addLayout(vlaoSegmentY);
+
 
         retranslateUi(Widget);
         QObject::connect(hsldRotateX, SIGNAL(valueChanged(int)), label_5, SLOT(setNum(int)));
         QObject::connect(hsldRotateY, SIGNAL(valueChanged(int)), label_6, SLOT(setNum(int)));
         QObject::connect(hsldRotateZ, SIGNAL(valueChanged(int)), label_7, SLOT(setNum(int)));
+        QObject::connect(hsldSegmentY, SIGNAL(valueChanged(int)), label_SY, SLOT(setNum(int)));
+        QObject::connect(hsldScale, SIGNAL(valueChanged(int)), label_SX, SLOT(setNum(int)));
 
         QMetaObject::connectSlotsByName(Widget);
     } // setupUi
@@ -294,12 +399,17 @@ public:
         label_6->setText(QCoreApplication::translate("Widget", "0", nullptr));
         label_3->setText(QCoreApplication::translate("Widget", "Rotation Z", nullptr));
         label_7->setText(QCoreApplication::translate("Widget", "0", nullptr));
+        label_9->setText(QCoreApplication::translate("Widget", "Scale", nullptr));
+        label_SX->setText(QCoreApplication::translate("Widget", "10", nullptr));
         label_8->setText(QCoreApplication::translate("Widget", "Shapes", nullptr));
         rbtn_Cube->setText(QCoreApplication::translate("Widget", "Cube", nullptr));
         rbtn_Cylinder->setText(QCoreApplication::translate("Widget", "Cylinder", nullptr));
         rbtn_Cone->setText(QCoreApplication::translate("Widget", "Cone", nullptr));
         rbtn_Sphere->setText(QCoreApplication::translate("Widget", "Sphere", nullptr));
         rbtn_Special->setText(QCoreApplication::translate("Widget", "Special", nullptr));
+        label_10->setText(QCoreApplication::translate("Widget", "Segments X", nullptr));
+        label_12->setText(QCoreApplication::translate("Widget", "Segments Y", nullptr));
+        label_SY->setText(QCoreApplication::translate("Widget", "10", nullptr));
     } // retranslateUi
 
 };

@@ -25,8 +25,17 @@ public:
     void setRotateY(float y);
     void setRotateZ(float z);
     float getRotateX()const;
+    void setSegmentX(float x);
+    float getSegmentX()const;
+    void setSegmentY(float y);
+    float getSegmentY()const;
     float getRotateY()const;
     float getRotateZ()const;
+
+
+    void setScale(float s);
+    float getScale()const;
+
     void setShape(int x);
     int getShape()const;
     void initializeGL();
@@ -54,6 +63,7 @@ private:
     float rotateX;
     float rotateY;
     float rotateZ;
+    float scale;
     int shape;
 };
 

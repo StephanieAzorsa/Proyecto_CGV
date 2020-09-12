@@ -56,3 +56,20 @@ void Widget::on_rbtn_Sphere_clicked()
    //ui->viewOpenGL->initializeGL();
      ui->viewOpenGL->update();
 }
+
+
+
+
+void Widget::on_hsldSegmentY_actionTriggered(int action)
+{
+
+}
+
+
+
+void Widget::on_hsldScale_actionTriggered(int action)
+{
+    std::cout<<"Escala X: "<<ui->hsldScale->value()<<std::endl;
+    ui->viewOpenGL->setScale(float(ui->hsldScale->value()));
+    ui->viewOpenGL->update();
+}

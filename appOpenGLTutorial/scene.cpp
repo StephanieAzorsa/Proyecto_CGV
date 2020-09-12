@@ -9,9 +9,11 @@ Scene::Scene( QWidget *parent ) : QOpenGLWidget( parent )
 {
     //Entiendo que acá debemos crear todas las figuras
     this->setFocusPolicy( Qt::StrongFocus );
-    sphere = new Sphere(25); //Se instancia un objeto de la clase esfera
+    //Estos son los segmentos
+    sphere = new Sphere(6); //Se instancia un objeto de la clase esfera creo que esto es y
     cube = new Cube(25);
     shape = 1;
+    scale = 3.0f;
 }
 
 //Destructor de la clase
@@ -133,7 +135,13 @@ void Scene::paintGL()
 
     QMatrix4x4 matrix; //se declara la matrix
 
-    matrix.ortho( -8.0f, 8.0f, -8.0f, 8.0f, 8.0f, -8.0f ); //Para la cámara
+    //Con esto creo que se pude cambiar la escala
+    //Yep, si se puede con esto
+    //Si 8 es a 1
+    //16 es mas chiquito unu
+    //3 es el valor mas grande
+   // matrix.ortho( -3.0f, 3.0f, -3.0f, 3.0f, 3.0f, -3.0f ); //Para la cámara
+    matrix.ortho( -1*scale, scale, -1*scale, scale, scale, -1*scale ); //Para la cámara
     matrix.translate( 0.0f, 0.0f, 0.0f ); //Mover la forma renderizada al origen
     //matrix.perspective();
 
@@ -180,7 +188,10 @@ void Scene::setRotateZ(float z){rotateZ=z;}
 float Scene::getRotateX()const{return rotateX;}
 float Scene::getRotateY()const{return rotateY;}
 float Scene::getRotateZ()const{return rotateZ;}
-
+void Scene::setSegmentX(float x){sphere = new Sphere(x);}
+float Scene::getSegmentX()const{return 1;}
 //Con esto deberíamos cambiar las formas
 void Scene::setShape(int x){ shape = x;}
 int Scene::getShape()const{return shape;}
+void Scene::setScale(float x){ scale = x;}
+float Scene::getScale()const{return scale;}

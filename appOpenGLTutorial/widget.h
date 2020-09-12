@@ -32,6 +32,14 @@ private slots:
 
     void on_rbtn_Sphere_clicked();
 
+    void on_hsldSegmentX_actionTriggered(int action);
+
+    void on_hsldSegmentY_actionTriggered(int action);
+
+    void on_hsldRotateX_windowIconChanged(const QIcon &icon);
+
+    void on_hsldScale_actionTriggered(int action);
+
 private:
     Ui::Widget *ui;
 };

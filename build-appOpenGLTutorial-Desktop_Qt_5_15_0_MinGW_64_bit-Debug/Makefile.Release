@@ -430,7 +430,8 @@ ui_widget.h: ../appOpenGLTutorial/widget.ui \
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/QMatrix4x4 \
 		../appOpenGLTutorial/sphere.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/QVector3D \
-		C:/Qt/5.15.0/mingw81_64/include/QtGui/QVector2D
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/QVector2D \
+		../appOpenGLTutorial/cube.h
 	'C:\Qt\5.15.0\mingw81_64\bin\uic.exe' ../appOpenGLTutorial/widget.ui -o ui_widget.h
 
 compiler_yacc_decl_make_all:
@@ -783,7 +784,8 @@ release/scene.o: ../appOpenGLTutorial/scene.cpp C:/Qt/5.15.0/mingw81_64/include/
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/qopenglvertexarrayobject.h \
 		../appOpenGLTutorial/sphere.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/QVector3D \
-		C:/Qt/5.15.0/mingw81_64/include/QtGui/QVector2D
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/QVector2D \
+		../appOpenGLTutorial/cube.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release/scene.o ../appOpenGLTutorial/scene.cpp
 
 release/sphere.o: ../appOpenGLTutorial/sphere.cpp ../appOpenGLTutorial/sphere.h \
@@ -1249,35 +1251,7 @@ release/widget.o: ../appOpenGLTutorial/widget.cpp ../appOpenGLTutorial/widget.h 
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/QOpenGLVertexArrayObject \
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/qopenglvertexarrayobject.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/QMatrix4x4 \
-		ui_widget.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/QVariant \
-		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QApplication \
-		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qapplication.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/qcoreapplication.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/qeventloop.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtGui/qguiapplication.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtGui/qinputmethod.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QHBoxLayout \
-		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qboxlayout.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qlayout.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qgridlayout.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QLabel \
-		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qlabel.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qframe.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QSlider \
-		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qslider.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qabstractslider.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QVBoxLayout \
-		../appOpenGLTutorial/scene.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtGui/QKeyEvent \
-		../appOpenGLTutorial/Triangle.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QOpenGLWidget \
-		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qopenglwidget.h \
-		../appOpenGLTutorial/sphere.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtGui/QVector3D \
-		C:/Qt/5.15.0/mingw81_64/include/QtGui/QVector2D
+		ui_widget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release/widget.o ../appOpenGLTutorial/widget.cpp
 
 release/qrc_shaders.o: release/qrc_shaders.cpp 
