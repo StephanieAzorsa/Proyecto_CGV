@@ -21,15 +21,16 @@ public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
 
-
-
-
 private slots:
     void on_hsldRotateX_actionTriggered(int action);
 
     void on_hsldRotateY_actionTriggered(int action);
 
     void on_hsldRotateZ_actionTriggered(int action);
+
+    void on_rbtn_Cube_clicked();
+
+    void on_rbtn_Sphere_clicked();
 
 private:
     Ui::Widget *ui;

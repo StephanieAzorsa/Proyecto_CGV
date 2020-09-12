@@ -1,41 +1,67 @@
 #include <QMatrix4x4>
 #include "scene.h"
 
+using namespace std;
 //Muestra la ventana de OpenGl donde se dibuja, es la escena donde se muestra las formas
 
 //Cconstructor que hereda las características de OpenGL
 Scene::Scene( QWidget *parent ) : QOpenGLWidget( parent )
 {
+    //Entiendo que acá debemos crear todas las figuras
     this->setFocusPolicy( Qt::StrongFocus );
     sphere = new Sphere(25); //Se instancia un objeto de la clase esfera
+    cube = new Cube(25);
+    shape = 1;
 }
 
 //Destructor de la clase
 Scene::~Scene()
 {
-    delete m_triangle;
-    delete sphere;
+      delete sphere;
+      delete cube;
 }
 
 //Sirve para realizar la inicialización de recursos OpenGL
 void Scene::initializeGL()
 {
-    //Esta clase es un contenedor para funciones del perfil principal de OpenGL 4.3
+    //Esta clase es un contenedor para funciones del perfil principal de OpenGL 4.0
     //Devuelve un puntero a un objeto que proporciona acceso a todas las funciones
     //para la versión y perfil en el contexto actual(currentContext).
     QOpenGLFunctions_4_0_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_0_Core>();
 
     //f-> es un operador para el acceso de miembros de un objeto,
-    //    en este caso se esta accediendo a funciones de OpenGl 4.3
+    //    en este caso se esta accediendo a funciones de OpenGl 4.0
     f->glClearColor( 0.1f, 0.1f, 0.2f, 1.0f ); //Da el color a la ventana
     f->glGenVertexArrays(1,VAOs); // parámetros: (#VAOs, VAOs)
     f->glGenBuffers(1,VBOs);
 
-    std::vector<int> ind = sphere->getIndices(); //Se obtiene el arreglo de indices de los vértices de la esfera
-    std::vector<QVector3D> vert = sphere->getVertices(); //Retorna todos los puntos de la esfera en un arreglo de 3
-    std::vector<float> pvalues; //Se guarda los verdices retornados
+    //Acá hago un switch para cambiar entre los datos de la figura
+   // vector<int> ind = sphere->getIndices(); //Se obtiene el arreglo de indices de los vértices de la esfera
+   // vector<QVector3D> vert = sphere->getVertices(); //Retorna todos los puntos de la esfera en un arreglo de 3
+   // vector<float> pvalues; //Se guarda los verdices retornados
+    vector<int> ind;
+    vector<QVector3D> vert;
+    vector<float> pvalues;
+    int numIndices;
 
-    int numIndices = sphere->getNumIndices(); //Obtiene el número de índices, el tamaño, la cantidad
+    switch (shape) {
+        case 1:
+        ind = sphere->getIndices(); //Se obtiene el arreglo de indices de los vértices de la esfera
+        vert = sphere->getVertices(); //Retorna todos los puntos de la esfera en un arreglo de 3
+        numIndices = sphere->getNumIndices();
+        break;
+        case 2:
+        ind = sphere->getIndices(); //Se obtiene el arreglo de indices de los vértices de la esfera
+        vert = sphere->getVertices(); //Retorna todos los puntos de la esfera en un arreglo de 3
+        numIndices = sphere->getNumIndices();
+          qWarning( "F2 init" );
+        break;
+    }
+
+
+
+   // int numIndices = sphere->getNumIndices(); //Obtiene el número de índices, el tamaño, la cantidad
+
     //Para obtener los puntos de los vectores en 3D y guardar cada punto en un arreglo de tipo float
     for (int i = 0; i < numIndices; i++) {
         pvalues.push_back((vert[ind[i]]).x());
@@ -62,10 +88,10 @@ void Scene::initializeGL()
     /**/
     //QOpenGLShader y QOpenGLShaderProgram protejen al programador de los detalles de compilar y vincular shaders y fragmentos*/
     QOpenGLShader vShader( QOpenGLShader::Vertex ); //Admite programas de shader, escritos en el lenguje GLSL
-    vShader.compileSourceFile( ":/shaders/vShader.glsl" );
+    vShader.compileSourceFile( ":/shaders/vertexShader.glsl" );
 
     QOpenGLShader fShader( QOpenGLShader::Fragment );
-    fShader.compileSourceFile( ":/shaders/fShader.glsl" );
+    fShader.compileSourceFile( ":/shaders/fragmentShader.glsl" );
 
     m_program.addShader( &vShader ); //Agrega un sahder compilado a este programa, método booleano
     m_program.addShader( &fShader ); //devuelve true y se puede agregar el shader o falso en caso contrario
@@ -122,7 +148,16 @@ void Scene::paintGL()
     //m_triangle->draw();
     f->glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de líneas
     f->glBindVertexArray(VAOs[0]);
-    f->glDrawArrays(GL_TRIANGLES, 0, sphere->getNumIndices());
+    switch(shape){
+        case 1:
+        f->glDrawArrays(GL_TRIANGLES, 0, sphere->getNumIndices());
+        break;
+        case 2:
+        f->glDrawArrays(GL_TRIANGLES, 0, sphere->getNumIndices());
+          qWarning( "F2 paint" );
+        break;
+    }
+    //f->glDrawArrays(GL_TRIANGLES, 0, sphere->getNumIndices());
 
     m_program.release(); //libera el programa del shader activo del contexto actual
 }
@@ -137,33 +172,15 @@ void Scene::resizeGL( int w, int h )
     //o con un mismo objeto
 }
 
-//Mueve el triangulo en las 4 direcciones con las teclas
-void Scene::keyPressEvent( QKeyEvent *event )
-{
-    const float step = 0.1f;
-
-    switch( event->key() )
-    {
-        case Qt::Key_Up:
-            m_triangle->setY0( m_triangle->y0() + step );
-            break;
-        case Qt::Key_Left:
-            m_triangle->setX0( m_triangle->x0() - step );
-            break;
-        case Qt::Key_Down:
-            m_triangle->setY0( m_triangle->y0() - step );
-            break;
-        case Qt::Key_Right:
-            m_triangle->setX0( m_triangle->x0() + step );
-            break;
-    }
-    update();
-}
 
 //Métodos de acceso de los atributos privados para realizar las rotaciones, en las 3 direcciones
 void Scene::setRotateX(float x){rotateX=x;}
 void Scene::setRotateY(float y){rotateY=y;}
 void Scene::setRotateZ(float z){rotateZ=z;}
-float Scene::getrotateX()const{return rotateX;}
-float Scene::getrotateY()const{return rotateY;}
-float Scene::getrotateZ()const{return rotateZ;}
+float Scene::getRotateX()const{return rotateX;}
+float Scene::getRotateY()const{return rotateY;}
+float Scene::getRotateZ()const{return rotateZ;}
+
+//Con esto deberíamos cambiar las formas
+void Scene::setShape(int x){ shape = x;}
+int Scene::getShape()const{return shape;}

@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Widget_t {
-    QByteArrayData data[6];
-    char stringdata0[108];
+    QByteArrayData data[8];
+    char stringdata0[152];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -37,12 +37,15 @@ QT_MOC_LITERAL(1, 7, 30), // "on_hsldRotateX_actionTriggered"
 QT_MOC_LITERAL(2, 38, 0), // ""
 QT_MOC_LITERAL(3, 39, 6), // "action"
 QT_MOC_LITERAL(4, 46, 30), // "on_hsldRotateY_actionTriggered"
-QT_MOC_LITERAL(5, 77, 30) // "on_hsldRotateZ_actionTriggered"
+QT_MOC_LITERAL(5, 77, 30), // "on_hsldRotateZ_actionTriggered"
+QT_MOC_LITERAL(6, 108, 20), // "on_rbtn_Cube_clicked"
+QT_MOC_LITERAL(7, 129, 22) // "on_rbtn_Sphere_clicked"
 
     },
     "Widget\0on_hsldRotateX_actionTriggered\0"
     "\0action\0on_hsldRotateY_actionTriggered\0"
-    "on_hsldRotateZ_actionTriggered"
+    "on_hsldRotateZ_actionTriggered\0"
+    "on_rbtn_Cube_clicked\0on_rbtn_Sphere_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -52,7 +55,7 @@ static const uint qt_meta_data_Widget[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   14, // methods
+       5,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -60,14 +63,18 @@ static const uint qt_meta_data_Widget[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    1,   29,    2, 0x08 /* Private */,
-       4,    1,   32,    2, 0x08 /* Private */,
-       5,    1,   35,    2, 0x08 /* Private */,
+       1,    1,   39,    2, 0x08 /* Private */,
+       4,    1,   42,    2, 0x08 /* Private */,
+       5,    1,   45,    2, 0x08 /* Private */,
+       6,    0,   48,    2, 0x08 /* Private */,
+       7,    0,   49,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::Int,    3,
     QMetaType::Void, QMetaType::Int,    3,
     QMetaType::Void, QMetaType::Int,    3,
+    QMetaType::Void,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -81,6 +88,8 @@ void Widget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 0: _t->on_hsldRotateX_actionTriggered((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 1: _t->on_hsldRotateY_actionTriggered((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 2: _t->on_hsldRotateZ_actionTriggered((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 3: _t->on_rbtn_Cube_clicked(); break;
+        case 4: _t->on_rbtn_Sphere_clicked(); break;
         default: ;
         }
     }
@@ -115,13 +124,13 @@ int Widget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 5;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
+        if (_id < 5)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 3;
+        _id -= 5;
     }
     return _id;
 }

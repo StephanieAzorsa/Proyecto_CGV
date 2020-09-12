@@ -1,5 +1,5 @@
+release/cube.o
 release/main.o
-release/model.o
 release/modelimporter.o
 release/scene.o
 release/sphere.o

@@ -1,5 +1,5 @@
+debug/cube.o
 debug/main.o
-debug/model.o
 debug/modelimporter.o
 debug/scene.o
 debug/sphere.o

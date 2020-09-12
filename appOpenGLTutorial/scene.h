@@ -14,6 +14,7 @@
 #include <QOpenGLWidget>
 #include <QOpenGLShaderProgram>
 #include "sphere.h"
+#include "cube.h"
 
 class Scene : public QOpenGLWidget
 {
@@ -23,22 +24,26 @@ public:
     void setRotateX(float x);
     void setRotateY(float y);
     void setRotateZ(float z);
-    float getrotateX()const;
-    float getrotateY()const;
-    float getrotateZ()const;
-
-private:
-    unsigned int VBOs[1],VAOs[1];
-    Sphere *sphere;
-
+    float getRotateX()const;
+    float getRotateY()const;
+    float getRotateZ()const;
+    void setShape(int x);
+    int getShape()const;
     void initializeGL();
     void paintGL();
     void resizeGL( int w, int h );
+private:
+    unsigned int VBOs[1],VAOs[1];
+    //Related to spheres
+    Sphere *sphere;
 
-    void keyPressEvent( QKeyEvent *event );
+
+
+    //void keyPressEvent( QKeyEvent *event );
+
+    Cube *cube;
 
     Triangle *m_triangle;
-
     QOpenGLShaderProgram m_program;
 
     int m_vertexAttr;
@@ -49,6 +54,7 @@ private:
     float rotateX;
     float rotateY;
     float rotateZ;
+    int shape;
 };
 
 #endif // SCENE_H
