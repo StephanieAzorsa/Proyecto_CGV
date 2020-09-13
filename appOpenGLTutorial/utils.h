@@ -1,6 +1,6 @@
 #ifndef UTILS_H
 #define UTILS_H
-#include <QOpenGLFunctions_4_3_Core>
+#include <QOpenGLFunctions_4_0_Core>
 #include <QOpenGLContext>
 #include <QOpenGLBuffer>
 #include <QOpenGLVertexArrayObject>
@@ -20,10 +20,11 @@
 #include <cmath>
 #include <vector>
 
+using namespace std;
 class Utils
 {
 private:
-    static std::string readShaderFile(const char* filePath);
+    static string readShaderFile(const char* filePath);
     static void printShaderLog(GLuint shader);
     static void printProgramLog(int prog);
     static GLuint prepareShader(int shaderTYPE, const char* shaderPath);
