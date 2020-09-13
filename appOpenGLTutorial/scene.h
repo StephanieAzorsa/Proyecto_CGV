@@ -14,6 +14,7 @@
 #include <QOpenGLShaderProgram>
 #include "sphere.h"
 #include "cube.h"
+#include "torus.h"
 
 class Scene : public QOpenGLWidget
 {
@@ -44,6 +45,7 @@ private:
     unsigned int VBOs[1],VAOs[1];
     Sphere *sphere;
     Cube *cubo;
+    Torus *torus;
 
     void initializeGL();
     void paintGL();

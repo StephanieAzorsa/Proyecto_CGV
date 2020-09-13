@@ -29,7 +29,7 @@ void Sphere::init(int prec) {
             float y = (float)cos(toRadians(180.0f - i * 180.0f / prec));
             float x = -(float)cos(toRadians(j*360.0f / prec))*(float)abs(cos(asin(y)));
             float z = (float)sin(toRadians(j*360.0f / (float)(prec)))*(float)abs(cos(asin(y)));
-            vertices[i*(prec + 1) + j] = QVector3D(1.7*x, 1.7*y, 1.7*z);
+            vertices[i*(prec + 1) + j] = QVector3D(2.5*x, 2.5*y, 2.5*z);
             texCoords[i*(prec + 1) + j] = QVector2D(((float)j / prec), ((float)i / prec));
             normals[i*(prec + 1) + j] = QVector3D(x, y, z);
 
@@ -57,8 +57,8 @@ void Sphere::init(int prec) {
 
 int Sphere::getNumVertices() { return numVertices; }
 int Sphere::getNumIndices() { return numIndices; }
-std::vector<int> Sphere::getIndices() { return indices; }
-std::vector<QVector3D> Sphere::getVertices() { return vertices; }
-std::vector<QVector2D> Sphere::getTexCoords() { return texCoords; }
-std::vector<QVector3D> Sphere::getNormals() { return normals; }
-std::vector<QVector3D> Sphere::getTangents() { return tangents; }
+vector<int> Sphere::getIndices() { return indices; }
+vector<QVector3D> Sphere::getVertices() { return vertices; }
+vector<QVector2D> Sphere::getTexCoords() { return texCoords; }
+vector<QVector3D> Sphere::getNormals() { return normals; }
+vector<QVector3D> Sphere::getTangents() { return tangents; }

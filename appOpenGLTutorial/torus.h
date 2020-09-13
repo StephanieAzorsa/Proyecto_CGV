@@ -3,8 +3,14 @@
 #include <cmath>
 #include <vector>
 #include <QVector3D>
+#include <QOpenGLFunctions_4_0_Core>
+#include <QOpenGLContext>
+#include <QOpenGLBuffer>
+#include <QOpenGLVertexArrayObject>
+
 #include <QVector2D>
 #include<string>
+using namespace std;
 class Torus
 {
 private:
@@ -20,8 +26,10 @@ private:
     std::vector<QVector3D> sTangents;
     std::vector<QVector3D> tTangents;
     void init();
+
     float toRadians(float degrees);
 public:
+
     Torus();
     Torus(float innerRadius, float outerRadius, int prec);
     int getNumVertices();

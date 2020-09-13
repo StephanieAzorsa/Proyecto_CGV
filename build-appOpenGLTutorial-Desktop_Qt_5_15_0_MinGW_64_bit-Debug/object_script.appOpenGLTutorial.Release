@@ -1,10 +1,11 @@
+release/cube.o
 release/main.o
-release/model.o
 release/modelimporter.o
 release/scene.o
 release/sphere.o
 release/triangle.o
 release/utils.o
+release/torus.o
 release/widget.o
 release/qrc_shaders.o
 release/moc_widget.o

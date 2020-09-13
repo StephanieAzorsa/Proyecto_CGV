@@ -16,6 +16,7 @@ SOURCES += \
     sphere.cpp \
     triangle.cpp \
     utils.cpp \
+    torus.cpp \
     widget.cpp
 
 HEADERS += \
@@ -25,6 +26,7 @@ HEADERS += \
     sphere.h \
     triangle.h \
     utils.h \
+    torus.h \
     widget.h
 
 FORMS += \

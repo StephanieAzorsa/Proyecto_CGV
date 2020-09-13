@@ -2,13 +2,13 @@
 #include "scene.h"
 //Chau
 //Muestra la ventana de OpenGl donde se dibuja, es la escena donde se muestra las formas
-
+using namespace std;
 //Cconstructor que hereda las características de OpenGL
 Scene::Scene( QWidget *parent ) : QOpenGLWidget( parent )
 {
     this->setFocusPolicy( Qt::StrongFocus );
     sphere = new Sphere(40); //Se instancia un objeto de la clase esfera
-
+    torus = new Torus(0.5f, 0.2f, 48); //Se instancia un objeto de la clase toroide
     this->figura = 0;
     //this->cubo = new Cube();
 
@@ -28,6 +28,7 @@ Scene::~Scene()
 {
     delete m_triangle;
     delete sphere;
+    delete torus;
 }
 
 //Sirve para realizar la inicialización de recursos OpenGL
@@ -42,13 +43,19 @@ void Scene::initializeGL()
     //    en este caso se esta accediendo a funciones de OpenGl 4.3
     f->glClearColor( 0.1f, 0.1f, 0.2f, 1.0f ); //Da el color a la ventana
     f->glGenVertexArrays(1,VAOs); // parámetros: (#VAOs, VAOs)
+    //f->glGenBuffers(1,VBOs);
     f->glGenBuffers(1,VBOs);
+    //std::vector<int> ind = sphere->getIndices(); //Se obtiene el arreglo de indices de los vértices de la esfera
+    //std::vector<QVector3D> vert = sphere->getVertices(); //Retorna todos los puntos de la esfera en un arreglo de 3
+    //std::vector<float> pvalues; //Se guarda los verdices retornados
 
-    std::vector<int> ind = sphere->getIndices(); //Se obtiene el arreglo de indices de los vértices de la esfera
-    std::vector<QVector3D> vert = sphere->getVertices(); //Retorna todos los puntos de la esfera en un arreglo de 3
+    std::vector<int> ind = torus->getIndices(); //Se obtiene el arreglo de indices de los vértices de la esfera
+    std::vector<QVector3D> vert = torus->getVertices(); //Retorna todos los puntos de la esfera en un arreglo de 3
     std::vector<float> pvalues; //Se guarda los verdices retornados
 
-    int numIndices = sphere->getNumIndices(); //Obtiene el número de índices, el tamaño, la cantidad
+    //int numIndices = sphere->getNumIndices(); //Obtiene el número de índices, el tamaño, la cantidad
+    int numIndices = torus->getNumIndices();
+  //  qWarning( "Halp" + numIndices);
     //Para obtener los puntos de los vectores en 3D y guardar cada punto en un arreglo de tipo float
     for (int i = 0; i < numIndices; i++) {
         pvalues.push_back((vert[ind[i]]).x());
@@ -123,9 +130,9 @@ void Scene::paintGL()
 
     QMatrix4x4 matrix; //se declara la matrix
 
-    //matrix.ortho( -8.0f, 8.0f, -8.0f, 8.0f, 8.0f, -8.0f ); //Para la cámara
-    matrix.perspective(1.0472*(180.0/(3.1415)), 4.0/3.0, 0.1, 100.0); //Para la cámara
-    matrix.lookAt(QVector3D(4.0,4.0,4.0),QVector3D(0,0,0),QVector3D(0,5,0)); //Para la cámara
+    matrix.ortho( -8.0f, 8.0f, -8.0f, 8.0f, 8.0f, -8.0f ); //Para la cámara
+    //matrix.perspective(1.0472*(180.0/(3.1415)), 4.0/3.0, 0.1, 100.0); //Para la cámara
+    //matrix.lookAt(QVector3D(4.0,4.0,4.0),QVector3D(0,0,0),QVector3D(0,5,0)); //Para la cámara
     matrix.translate( 0.0f, 0.0f, 0.0f ); //Mover la forma renderizada al origen
 
     //Para las rotaciones en el eje x, y, z
@@ -155,11 +162,30 @@ void Scene::paintGL()
         if (transparente) {
             f->glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de líneas
             f->glBindVertexArray(VAOs[0]);
+            f->glDrawArrays(GL_TRIANGLES, 0, torus->getNumIndices());
+
+        }
+        if (relleno) {
+            f->glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de relleno
+            f->glBindVertexArray(VAOs[0]);
+           f->glDrawArrays(GL_TRIANGLES, 0, torus->getNumIndices());
+
+        }
+        break;
+
+
+
+        case 3:
+        if (transparente) {
+            f->glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de líneas
+            f->glBindVertexArray(VAOs[0]);
+            //f->glDrawArrays(GL_TRIANGLES, 0, sphere->getNumIndices());
             f->glDrawArrays(GL_TRIANGLES, 0, sphere->getNumIndices());
         }
         if (relleno) {
             f->glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de relleno
             f->glBindVertexArray(VAOs[0]);
+           // f->glDrawArrays(GL_TRIANGLES, 0, sphere->getNumIndices());
             f->glDrawArrays(GL_TRIANGLES, 0, sphere->getNumIndices());
         }
         break;
