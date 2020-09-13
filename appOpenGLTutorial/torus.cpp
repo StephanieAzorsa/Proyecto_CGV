@@ -41,10 +41,12 @@ for (int i = 0; i < prec + 1; i++) {
 
    // rMat.setToIdentity();
     cout<<"amt : "<<amt<<endl;
-    rMat.rotate(amt, QVector3D(1.0f, 1.0f, 1.0f));
+
+    rMat.rotate(amt, 1.0f, 1.0f, 1.0f);
+
     cout<<rMat.column(0).x()<<"--"<<rMat.column(1).x()<<" ---"<<rMat.column(2).x()<<" ---"<<rMat.column(3).x()<<endl;
-     cout<<rMat.column(0).y()<<"--"<<rMat.column(1).y()<<" ---"<<rMat.column(2).y()<<" ---"<<rMat.column(3).y()<<endl;
-     cout<<rMat.column(0).z()<<"--"<<rMat.column(1).z()<<" ---"<<rMat.column(2).z()<<" ---"<<rMat.column(3).z()<<endl;
+    cout<<rMat.column(0).y()<<"--"<<rMat.column(1).y()<<" ---"<<rMat.column(2).y()<<" ---"<<rMat.column(3).y()<<endl;
+    cout<<rMat.column(0).z()<<"--"<<rMat.column(1).z()<<" ---"<<rMat.column(2).z()<<" ---"<<rMat.column(3).z()<<endl;
 
     QVector3D initPos(rMat * QVector4D(outer, 0.0f, 0.0f, 1.0f));
     //cout<<initPos.x()<<" Y: "<<initPos.y()<<" Z: " <<initPos.z()<<endl;
@@ -65,7 +67,7 @@ for (int ring = 1; ring < prec + 1; ring++) {
 
            QMatrix4x4 rMat;
           // rMat.setToIdentity();
-           rMat.rotate(amt, QVector3D(0.0f, 1.0f, 0.0f));
+           rMat.rotate(amt, 0.0f, 1.0f, 0.0f);
            vertices[ring*(prec + 1) + i] = QVector3D(rMat * QVector4D(vertices[i], 1.0f));
 
             //Primero está el punto t y luego el punto s

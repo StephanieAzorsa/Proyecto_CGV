@@ -1,6 +1,7 @@
 release/cube.o
 release/main.o
 release/modelimporter.o
+release/pyramid.o
 release/scene.o
 release/sphere.o
 release/triangle.o

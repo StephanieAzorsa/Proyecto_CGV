@@ -15,6 +15,7 @@
 #include "sphere.h"
 #include "cube.h"
 #include "torus.h"
+#include "pyramid.h"
 
 class Scene : public QOpenGLWidget
 {
@@ -42,10 +43,11 @@ public:
     bool transparente;
 
 private:
-    unsigned int VBOs[1],VAOs[1];
+    unsigned int VBOs[2],VAOs[1];
     Sphere *sphere;
     Cube *cubo;
     Torus *torus;
+    pyramid *pyramidx;
 
     void initializeGL();
     void paintGL();

@@ -12,6 +12,7 @@ SOURCES += \
     cube.cpp \
     main.cpp \
     modelimporter.cpp \
+    pyramid.cpp \
     scene.cpp \
     sphere.cpp \
     triangle.cpp \
@@ -22,6 +23,7 @@ SOURCES += \
 HEADERS += \
     cube.h \
     modelimporter.h \
+    pyramid.h \
     scene.h \
     sphere.h \
     triangle.h \

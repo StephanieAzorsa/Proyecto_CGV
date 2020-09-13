@@ -45,6 +45,8 @@ private slots:
 
     void on_hsdSegmentoY_actionTriggered(int action);
 
+    void on_radioButton_3_clicked();
+
 private:
     Ui::Widget *ui;
 };

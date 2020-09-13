@@ -1,6 +1,7 @@
 debug/cube.o
 debug/main.o
 debug/modelimporter.o
+debug/pyramid.o
 debug/scene.o
 debug/sphere.o
 debug/triangle.o

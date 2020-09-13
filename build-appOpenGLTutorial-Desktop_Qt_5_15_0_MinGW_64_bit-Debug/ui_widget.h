@@ -393,7 +393,7 @@ public:
         label_9->setText(QCoreApplication::translate("Widget", "FIGURAS", nullptr));
         radioButton->setText(QCoreApplication::translate("Widget", "Cubo", nullptr));
         radioButton_2->setText(QCoreApplication::translate("Widget", "Esfera", nullptr));
-        radioButton_3->setText(QCoreApplication::translate("Widget", "Torus", nullptr));
+        radioButton_3->setText(QCoreApplication::translate("Widget", "Piramide", nullptr));
         label_8->setText(QCoreApplication::translate("Widget", "RENDER", nullptr));
         checkBoxTransparente->setText(QCoreApplication::translate("Widget", "Transparente", nullptr));
         checkBoxRelleno->setText(QCoreApplication::translate("Widget", "Relleno", nullptr));
