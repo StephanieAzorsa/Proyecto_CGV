@@ -3,6 +3,7 @@ debug/main.o
 debug/modelimporter.o
 debug/scene.o
 debug/sphere.o
+debug/torus.o
 debug/triangle.o
 debug/utils.o
 debug/widget.o

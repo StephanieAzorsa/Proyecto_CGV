@@ -14,6 +14,7 @@ SOURCES += \
     modelimporter.cpp \
     scene.cpp \
     sphere.cpp \
+    torus.cpp \
     triangle.cpp \
     utils.cpp \
     widget.cpp
@@ -23,6 +24,7 @@ HEADERS += \
     modelimporter.h \
     scene.h \
     sphere.h \
+    torus.h \
     triangle.h \
     utils.h \
     widget.h

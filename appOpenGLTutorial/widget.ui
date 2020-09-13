@@ -27,7 +27,7 @@
    <property name="geometry">
     <rect>
      <x>600</x>
-     <y>310</y>
+     <y>340</y>
      <width>181</width>
      <height>243</height>
     </rect>
@@ -44,7 +44,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Rotation</string>
+       <string>Camera</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -267,9 +267,9 @@
    <property name="geometry">
     <rect>
      <x>600</x>
-     <y>30</y>
+     <y>70</y>
      <width>181</width>
-     <height>157</height>
+     <height>168</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="vlaoShapes">
@@ -297,6 +297,12 @@
        <layout class="QHBoxLayout" name="horizontalLayout_4">
         <item>
          <widget class="QRadioButton" name="rbtn_Cube">
+          <property name="font">
+           <font>
+            <family>Consolas</family>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>Cube</string>
           </property>
@@ -312,6 +318,12 @@
        <layout class="QHBoxLayout" name="horizontalLayout_6">
         <item>
          <widget class="QRadioButton" name="rbtn_Cylinder">
+          <property name="font">
+           <font>
+            <family>Consolas</family>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>Cylinder</string>
           </property>
@@ -327,6 +339,12 @@
        <layout class="QHBoxLayout" name="horizontalLayout_7">
         <item>
          <widget class="QRadioButton" name="rbtn_Cone">
+          <property name="font">
+           <font>
+            <family>Consolas</family>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>Cone</string>
           </property>
@@ -342,6 +360,12 @@
        <layout class="QHBoxLayout" name="horizontalLayout_8">
         <item>
          <widget class="QRadioButton" name="rbtn_Sphere">
+          <property name="font">
+           <font>
+            <family>Consolas</family>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>Sphere</string>
           </property>
@@ -357,6 +381,12 @@
        <layout class="QHBoxLayout" name="horizontalLayout_10">
         <item>
          <widget class="QRadioButton" name="rbtn_Special">
+          <property name="font">
+           <font>
+            <family>Consolas</family>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>Special</string>
           </property>
@@ -372,7 +402,7 @@
    <property name="geometry">
     <rect>
      <x>600</x>
-     <y>200</y>
+     <y>240</y>
      <width>181</width>
      <height>102</height>
     </rect>
@@ -395,6 +425,39 @@
          <set>Qt::AlignCenter</set>
         </property>
        </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_13">
+        <item>
+         <widget class="QLabel" name="label_11">
+          <property name="font">
+           <font>
+            <family>Consolas</family>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>10</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSlider" name="horizontalSlider">
+          <property name="minimum">
+           <number>3</number>
+          </property>
+          <property name="maximum">
+           <number>60</number>
+          </property>
+          <property name="value">
+           <number>10</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
      </layout>
     </item>

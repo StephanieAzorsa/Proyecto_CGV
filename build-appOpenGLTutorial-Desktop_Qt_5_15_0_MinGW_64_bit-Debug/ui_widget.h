@@ -71,6 +71,9 @@ public:
     QVBoxLayout *vlaoSegments;
     QVBoxLayout *vlaoSegmentX;
     QLabel *label_10;
+    QHBoxLayout *horizontalLayout_13;
+    QLabel *label_11;
+    QSlider *horizontalSlider;
     QVBoxLayout *vlaoSegmentY;
     QLabel *label_12;
     QHBoxLayout *horizontalLayout_9;
@@ -87,7 +90,7 @@ public:
         viewOpenGL->setGeometry(QRect(40, 40, 500, 500));
         layoutWidget = new QWidget(Widget);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(600, 310, 181, 243));
+        layoutWidget->setGeometry(QRect(600, 340, 181, 243));
         vlaoRotation = new QVBoxLayout(layoutWidget);
         vlaoRotation->setObjectName(QString::fromUtf8("vlaoRotation"));
         vlaoRotation->setContentsMargins(0, 0, 0, 0);
@@ -242,7 +245,7 @@ public:
 
         layoutWidget_2 = new QWidget(Widget);
         layoutWidget_2->setObjectName(QString::fromUtf8("layoutWidget_2"));
-        layoutWidget_2->setGeometry(QRect(600, 30, 181, 157));
+        layoutWidget_2->setGeometry(QRect(600, 70, 181, 168));
         vlaoShapes = new QVBoxLayout(layoutWidget_2);
         vlaoShapes->setObjectName(QString::fromUtf8("vlaoShapes"));
         vlaoShapes->setContentsMargins(0, 0, 0, 0);
@@ -259,6 +262,7 @@ public:
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
         rbtn_Cube = new QRadioButton(layoutWidget_2);
         rbtn_Cube->setObjectName(QString::fromUtf8("rbtn_Cube"));
+        rbtn_Cube->setFont(font1);
 
         horizontalLayout_4->addWidget(rbtn_Cube);
 
@@ -274,6 +278,7 @@ public:
         horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
         rbtn_Cylinder = new QRadioButton(layoutWidget_2);
         rbtn_Cylinder->setObjectName(QString::fromUtf8("rbtn_Cylinder"));
+        rbtn_Cylinder->setFont(font1);
 
         horizontalLayout_6->addWidget(rbtn_Cylinder);
 
@@ -289,6 +294,7 @@ public:
         horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
         rbtn_Cone = new QRadioButton(layoutWidget_2);
         rbtn_Cone->setObjectName(QString::fromUtf8("rbtn_Cone"));
+        rbtn_Cone->setFont(font1);
 
         horizontalLayout_7->addWidget(rbtn_Cone);
 
@@ -304,6 +310,7 @@ public:
         horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
         rbtn_Sphere = new QRadioButton(layoutWidget_2);
         rbtn_Sphere->setObjectName(QString::fromUtf8("rbtn_Sphere"));
+        rbtn_Sphere->setFont(font1);
 
         horizontalLayout_8->addWidget(rbtn_Sphere);
 
@@ -319,6 +326,7 @@ public:
         horizontalLayout_10->setObjectName(QString::fromUtf8("horizontalLayout_10"));
         rbtn_Special = new QRadioButton(layoutWidget_2);
         rbtn_Special->setObjectName(QString::fromUtf8("rbtn_Special"));
+        rbtn_Special->setFont(font1);
 
         horizontalLayout_10->addWidget(rbtn_Special);
 
@@ -330,7 +338,7 @@ public:
 
         layoutWidget_3 = new QWidget(Widget);
         layoutWidget_3->setObjectName(QString::fromUtf8("layoutWidget_3"));
-        layoutWidget_3->setGeometry(QRect(600, 200, 181, 102));
+        layoutWidget_3->setGeometry(QRect(600, 240, 181, 102));
         vlaoSegments = new QVBoxLayout(layoutWidget_3);
         vlaoSegments->setObjectName(QString::fromUtf8("vlaoSegments"));
         vlaoSegments->setContentsMargins(0, 0, 0, 0);
@@ -342,6 +350,26 @@ public:
         label_10->setAlignment(Qt::AlignCenter);
 
         vlaoSegmentX->addWidget(label_10);
+
+        horizontalLayout_13 = new QHBoxLayout();
+        horizontalLayout_13->setObjectName(QString::fromUtf8("horizontalLayout_13"));
+        label_11 = new QLabel(layoutWidget_3);
+        label_11->setObjectName(QString::fromUtf8("label_11"));
+        label_11->setFont(font1);
+
+        horizontalLayout_13->addWidget(label_11);
+
+        horizontalSlider = new QSlider(layoutWidget_3);
+        horizontalSlider->setObjectName(QString::fromUtf8("horizontalSlider"));
+        horizontalSlider->setMinimum(3);
+        horizontalSlider->setMaximum(60);
+        horizontalSlider->setValue(10);
+        horizontalSlider->setOrientation(Qt::Horizontal);
+
+        horizontalLayout_13->addWidget(horizontalSlider);
+
+
+        vlaoSegmentX->addLayout(horizontalLayout_13);
 
 
         vlaoSegments->addLayout(vlaoSegmentX);
@@ -392,7 +420,7 @@ public:
     void retranslateUi(QWidget *Widget)
     {
         Widget->setWindowTitle(QCoreApplication::translate("Widget", "Widget", nullptr));
-        label_4->setText(QCoreApplication::translate("Widget", "Rotation", nullptr));
+        label_4->setText(QCoreApplication::translate("Widget", "Camera", nullptr));
         label->setText(QCoreApplication::translate("Widget", "Rotation X", nullptr));
         label_5->setText(QCoreApplication::translate("Widget", "0", nullptr));
         label_2->setText(QCoreApplication::translate("Widget", "Rotation Y", nullptr));
@@ -408,6 +436,7 @@ public:
         rbtn_Sphere->setText(QCoreApplication::translate("Widget", "Sphere", nullptr));
         rbtn_Special->setText(QCoreApplication::translate("Widget", "Special", nullptr));
         label_10->setText(QCoreApplication::translate("Widget", "Segments X", nullptr));
+        label_11->setText(QCoreApplication::translate("Widget", "10", nullptr));
         label_12->setText(QCoreApplication::translate("Widget", "Segments Y", nullptr));
         label_SY->setText(QCoreApplication::translate("Widget", "10", nullptr));
     } // retranslateUi
