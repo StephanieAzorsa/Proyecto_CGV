@@ -8,6 +8,17 @@ Scene::Scene( QWidget *parent ) : QOpenGLWidget( parent )
 {
     this->setFocusPolicy( Qt::StrongFocus );
     sphere = new Sphere(25); //Se instancia un objeto de la clase esfera
+
+    this->figura = 0;
+    //this->cubo = new Cube();
+
+    this->rotateX = 0.0;
+    this->rotateY = 0.0;
+    this->rotateZ = 0.0;
+
+    this->scale = 10.0;
+    this->transparente = false;
+    this->relleno = false;
 }
 
 //Destructor de la clase
@@ -23,7 +34,7 @@ void Scene::initializeGL()
     //Esta clase es un contenedor para funciones del perfil principal de OpenGL 4.3
     //Devuelve un puntero a un objeto que proporciona acceso a todas las funciones
     //para la versión y perfil en el contexto actual(currentContext).
-    QOpenGLFunctions_4_3_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_3_Core>();
+    QOpenGLFunctions_4_0_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_0_Core>();
 
     //f-> es un operador para el acceso de miembros de un objeto,
     //    en este caso se esta accediendo a funciones de OpenGl 4.3
@@ -92,12 +103,13 @@ void Scene::initializeGL()
 
     //Se instancia un objeto de la clase Triangle
     //m_triangle = new Triangle( &m_program, m_vertexAttr, m_colorAttr );
+    cubo = new Cube();
 }
 
 //Renderiza las imágenes o formas
 void Scene::paintGL()
 {
-    QOpenGLFunctions_4_3_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_3_Core>();
+    QOpenGLFunctions_4_0_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_0_Core>();
     f->glClear( GL_COLOR_BUFFER_BIT );
 
     //bind: vincula el programa de shader al contexto actual, y lo convierte al porgrama de shader actual
@@ -116,13 +128,41 @@ void Scene::paintGL()
     matrix.rotate(float(rotateY), 0.0f, 1.0f, 0.0f);
     matrix.rotate(float(rotateZ), 0.0f, 0.0f, 1.0f);
 
+    matrix.scale(float(scale)/100.0);
+
     //setUniformValue: establece la variable uniform en la ubicación en el contexto actual
     m_program.setUniformValue( m_matrixUniform, matrix ); //Permite la asignación de las operaciones de transformación y asignarlas al shader
 
     //m_triangle->draw();
-    f->glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de líneas
-    f->glBindVertexArray(VAOs[0]);
-    f->glDrawArrays(GL_TRIANGLES, 0, sphere->getNumIndices());
+    switch (figura) {
+        case 1:
+        if (transparente) {
+            f->glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de líneas
+            cubo->draw();
+        }
+        if (relleno) {
+            f->glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+            cubo->draw();
+        }
+        break;
+
+        case 2:
+        if (transparente) {
+            f->glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de líneas
+            f->glBindVertexArray(VAOs[0]);
+            f->glDrawArrays(GL_TRIANGLES, 0, sphere->getNumIndices());
+        }
+        if (relleno) {
+            f->glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de relleno
+            f->glBindVertexArray(VAOs[0]);
+            f->glDrawArrays(GL_TRIANGLES, 0, sphere->getNumIndices());
+        }
+        break;
+    }
+
+    //f->glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de líneas
+    //f->glBindVertexArray(VAOs[0]);
+    //f->glDrawArrays(GL_TRIANGLES, 0, sphere->getNumIndices());
 
     m_program.release(); //libera el programa del shader activo del contexto actual
 }
@@ -130,7 +170,7 @@ void Scene::paintGL()
 //Sirve para configurar las matrices de transformación y otros recursos dependientes del tamaño de la ventana
 void Scene::resizeGL( int w, int h )
 {
-    QOpenGLFunctions_4_3_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_3_Core>();
+    QOpenGLFunctions_4_0_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_0_Core>();
 
     f->glViewport( 0, 0, w, h ); //Marca la región sobre la cual se quiere dibujar nuestras formas
     //Tiene como parámetro las dimensiones de la ventada donde se va a dibujar diferentes escenas de un mismo objeto
@@ -161,9 +201,11 @@ void Scene::keyPressEvent( QKeyEvent *event )
 }
 
 //Métodos de acceso de los atributos privados para realizar las rotaciones, en las 3 direcciones
-void Scene::setRotateX(float x){rotateX=x;}
-void Scene::setRotateY(float y){rotateY=y;}
-void Scene::setRotateZ(float z){rotateZ=z;}
+void Scene::setRotateX(float x){rotateX = x;}
+void Scene::setRotateY(float y){rotateY = y;}
+void Scene::setRotateZ(float z){rotateZ = z;}
 float Scene::getrotateX()const{return rotateX;}
 float Scene::getrotateY()const{return rotateY;}
 float Scene::getrotateZ()const{return rotateZ;}
+void Scene::setscala(float s){scale = s;}
+float Scene::getscala()const{return scale;}

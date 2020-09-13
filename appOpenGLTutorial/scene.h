@@ -1,12 +1,11 @@
 #ifndef SCENE_H
 #define SCENE_H
 
-
 #include <QKeyEvent>
 #include "Triangle.h"
 #include <QWidget>
 #include <QOpenGLWidget>
-#include <QOpenGLFunctions_4_3_Core>
+#include <QOpenGLFunctions_4_0_Core>
 #include <QOpenGLContext>
 #include <QOpenGLBuffer>
 #include <QOpenGLVertexArrayObject>
@@ -14,6 +13,7 @@
 #include <QOpenGLWidget>
 #include <QOpenGLShaderProgram>
 #include "sphere.h"
+#include "cube.h"
 
 class Scene : public QOpenGLWidget
 {
@@ -27,9 +27,18 @@ public:
     float getrotateY()const;
     float getrotateZ()const;
 
+    void setscala(float s);
+    float getscala()const;
+
+    int figura;
+
+    bool relleno;
+    bool transparente;
+
 private:
     unsigned int VBOs[1],VAOs[1];
     Sphere *sphere;
+    Cube *cubo;
 
     void initializeGL();
     void paintGL();
@@ -45,10 +54,11 @@ private:
     int m_colorAttr;
     int m_matrixUniform;
 
-
     float rotateX;
     float rotateY;
     float rotateZ;
+
+    float scale;
 };
 
 #endif // SCENE_H

@@ -31,6 +31,16 @@ private slots:
 
     void on_hsldRotateZ_actionTriggered(int action);
 
+    void on_radioButton_clicked();
+
+    void on_radioButton_2_clicked();
+
+    void on_hsldScale_actionTriggered(int action);
+
+    void on_checkBoxTransparente_stateChanged(int arg1);
+
+    void on_checkBoxRelleno_stateChanged(int arg1);
+
 private:
     Ui::Widget *ui;
 };
