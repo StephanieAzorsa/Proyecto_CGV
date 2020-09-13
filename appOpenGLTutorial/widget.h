@@ -41,6 +41,10 @@ private slots:
 
     void on_checkBoxRelleno_stateChanged(int arg1);
 
+    void on_hsdSegmentoX_actionTriggered(int action);
+
+    void on_hsdSegmentoY_actionTriggered(int action);
+
 private:
     Ui::Widget *ui;
 };

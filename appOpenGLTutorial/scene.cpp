@@ -7,7 +7,7 @@
 Scene::Scene( QWidget *parent ) : QOpenGLWidget( parent )
 {
     this->setFocusPolicy( Qt::StrongFocus );
-    sphere = new Sphere(25); //Se instancia un objeto de la clase esfera
+    sphere = new Sphere(40); //Se instancia un objeto de la clase esfera
 
     this->figura = 0;
     //this->cubo = new Cube();
@@ -16,9 +16,11 @@ Scene::Scene( QWidget *parent ) : QOpenGLWidget( parent )
     this->rotateY = 0.0;
     this->rotateZ = 0.0;
 
-    this->scale = 10.0;
+    this->scale = 100.0;
     this->transparente = false;
     this->relleno = false;
+    this->segmentoX = 3;
+    this->segmentoY = 3;
 }
 
 //Destructor de la clase
@@ -114,14 +116,17 @@ void Scene::paintGL()
 
     //bind: vincula el programa de shader al contexto actual, y lo convierte al porgrama de shader actual
     //Es equivalente a llamar al glUseProgram()
+    //sphere = new Sphere(segmentoX);
+
     if ( !m_program.bind() )
         return;
 
     QMatrix4x4 matrix; //se declara la matrix
 
-    matrix.ortho( -8.0f, 8.0f, -8.0f, 8.0f, 8.0f, -8.0f ); //Para la cámara
+    //matrix.ortho( -8.0f, 8.0f, -8.0f, 8.0f, 8.0f, -8.0f ); //Para la cámara
+    matrix.perspective(1.0472*(180.0/(3.1415)), 4.0/3.0, 0.1, 100.0); //Para la cámara
+    matrix.lookAt(QVector3D(4.0,4.0,4.0),QVector3D(0,0,0),QVector3D(0,5,0)); //Para la cámara
     matrix.translate( 0.0f, 0.0f, 0.0f ); //Mover la forma renderizada al origen
-    //matrix.perspective();
 
     //Para las rotaciones en el eje x, y, z
     matrix.rotate(float(rotateX), 1.0f, 0.0f, 0.0f);
@@ -209,3 +214,7 @@ float Scene::getrotateY()const{return rotateY;}
 float Scene::getrotateZ()const{return rotateZ;}
 void Scene::setscala(float s){scale = s;}
 float Scene::getscala()const{return scale;}
+void Scene::setsegmentoX(int seg){segmentoX = seg;}
+void Scene::setsegmentoY(int seg){segmentoY = seg;}
+int Scene::getsegmentoX()const{return segmentoX;}
+int Scene::getsegmentoY()const{return segmentoY;}

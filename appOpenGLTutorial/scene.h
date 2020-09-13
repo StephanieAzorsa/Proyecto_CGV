@@ -30,6 +30,11 @@ public:
     void setscala(float s);
     float getscala()const;
 
+    void setsegmentoX(int seg);
+    void setsegmentoY(int seg);
+    int getsegmentoX()const;
+    int getsegmentoY()const;
+
     int figura;
 
     bool relleno;
@@ -59,6 +64,9 @@ private:
     float rotateZ;
 
     float scale;
+
+    int segmentoX;
+    int segmentoY;
 };
 
 #endif // SCENE_H
