@@ -1,6 +1,6 @@
 #include <QMatrix4x4>
 #include "scene.h"
-
+//Chau
 //Muestra la ventana de OpenGl donde se dibuja, es la escena donde se muestra las formas
 
 //Cconstructor que hereda las características de OpenGL
