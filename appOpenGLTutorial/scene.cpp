@@ -8,7 +8,7 @@ Scene::Scene( QWidget *parent ) : QOpenGLWidget( parent )
 {
     this->setFocusPolicy( Qt::StrongFocus );
     sphere = new Sphere(40); //Se instancia un objeto de la clase esfera
-    torus = new Torus(0.5f, 0.2f, 48); //Se instancia un objeto de la clase toroide
+   // torus = new Torus(0.5f, 0.2f, 48); //Se instancia un objeto de la clase toroide
     this->figura = 0;
     //this->cubo = new Cube();
 
@@ -122,6 +122,7 @@ void Scene::initializeGL()
     //m_triangle = new Triangle( &m_program, m_vertexAttr, m_colorAttr );
     cubo = new Cube();
     pyramidx = new pyramid();
+    torus = new Torus();
 }
 
 //Renderiza las imágenes o formas
@@ -196,16 +197,15 @@ void Scene::paintGL()
         case 4:
         if (transparente) {
             f->glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de líneas
-            f->glBindVertexArray(VAOs[0]);
-            f->glDrawArrays(GL_TRIANGLES, 0, torus->getNumIndices());
+            torus->draw();
 
         }
         if (relleno) {
-            f->glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de relleno
-            f->glBindVertexArray(VAOs[0]);
-           f->glDrawArrays(GL_TRIANGLES, 0, torus->getNumIndices());
+            f->glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de líneas
+            torus->draw();
 
         }
+        break;
     }
 
     //f->glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de líneas

@@ -7,8 +7,8 @@
 using namespace std;
 Torus::Torus() {
     prec = 48;
-    inner = 0.5f;
-    outer = 0.2f;
+    inner = 0.8f;
+    outer = 0.4f;
     init();
 }
 Torus::Torus(float innerRadius, float outerRadius, int precIn) {
@@ -34,7 +34,7 @@ void Torus::init() {
             float amt = toRadians(i*360.0f / prec);
 
             QMatrix4x4 rMat;
-            rMat.setToIdentity();
+            //rMat.setToIdentity();
             rMat.rotate(amt, QVector3D(0.0f, 0.0f, 1.0f));
             QVector3D initPos(rMat * QVector4D(outer, 0.0f, 0.0f, 1.0f));
 
@@ -56,7 +56,7 @@ void Torus::init() {
                 float amt = (float)toRadians((float)ring * 360.0f / (prec));
 
                 QMatrix4x4 rMat;
-                rMat.setToIdentity();
+                //rMat.setToIdentity();
                 rMat.rotate(amt, QVector3D(0.0f, 1.0f, 0.0f));
                 vertices[ring*(prec + 1) + i] = QVector3D(rMat * QVector4D(vertices[i], 1.0f));
                 //vertices[ring*(prec + 1) + i].setX(vertices[ring*(prec + 1) + i].x()*2.5f);
@@ -87,6 +87,7 @@ void Torus::init() {
                 indices[((ring*prec + i) * 2 + 1) * 3 + 2] = (ring + 1)*(prec + 1) + i + 1;
             }
         }
+        initialize();
 }
 // accessors for the torus indices and vertices
 int Torus::getNumVertices() { return numVertices; }
@@ -98,3 +99,53 @@ std::vector<QVector3D> Torus::getNormals() { return normals; }
 std::vector<QVector3D> Torus::getStangents() { return sTangents; }
 std::vector<QVector3D> Torus::getTtangents() { return tTangents; }
 
+void Torus::initialize() {
+    QOpenGLFunctions_4_0_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_0_Core>();
+    std::vector<float> pvalues; //Se guarda los verdices retornados
+
+    std::vector<int> ind = indices; //Se obtiene el arreglo de indices de los vértices de la esfera
+    std::vector<QVector3D> vert = vertices; //Retorna todos los puntos de la esfera en un arreglo de 3
+    //std::vector<float> pvalues; //Se guarda los verdices retornados
+
+    //int numIndices = sphere->getNumIndices(); //Obtiene el número de índices, el tamaño, la cantidad
+    //int numIndices = sphere->getNumIndices();
+
+  //  qWarning( "Halp" + numIndices);
+    //Para obtener los puntos de los vectores en 3D y guardar cada punto en un arreglo de tipo float
+    for (int i = 0; i < numIndices; i++) {
+        pvalues.push_back((vert[ind[i]]).x());
+        pvalues.push_back((vert[ind[i]]).y());
+        pvalues.push_back((vert[ind[i]]).z());
+    }
+
+
+    f->glGenVertexArrays(1,&VAO3); // parámetros: (#VAOs, VAOs)
+    f->glBindVertexArray(VAO3); //Enlaza el VAO
+
+    //f->glGenBuffers(1,VBOs);
+    f->glGenBuffers(1,&VBO3);
+    //VAOs for SPHERE
+
+    f->glBindBuffer(GL_ARRAY_BUFFER,VBO3); //Enlaza el VBO
+
+    //Se especifica el tamaño y se manda como parámetro el tamaño y la cantidad
+    //total de puntos al buffer de datos
+    f->glBufferData(GL_ARRAY_BUFFER,pvalues.size()*4, &pvalues[0], GL_STATIC_DRAW);
+
+    //Describe cómo se distribuyen los datos, ya que los datos están vinculados a GL_ARRAY_BUFFER
+    //y este descriptor se guarda en nuestra matriz de vértices
+    f->glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,3*sizeof(float),(void*)0);
+
+
+
+    //habilita el índice de atributo para el atributo de posición.
+    //Si el atributo no está habilitado, no se utilizará durante el renderizado.
+    f->glEnableVertexAttribArray(0); //0: Indice de los vértices, 1: colores, se definen los demás, ejm: 2: textura, 3:normal
+
+}
+
+void Torus::draw() {
+    QOpenGLFunctions_4_0_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_0_Core>();
+    f->glBindVertexArray(VAO3);
+    f->glDrawArrays(GL_TRIANGLES, 0, numIndices);
+}

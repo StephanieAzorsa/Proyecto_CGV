@@ -22,12 +22,12 @@ private:
     GLuint VAO1, VBO1;
 
     float pyramidPositions[54] =
-    { -1.0f, -1.0f, 1.0f, 1.0f, -1.0f, 1.0f, 0.0f, 1.0f, 0.0f, // front face
-     1.0f, -1.0f, 1.0f, 1.0f, -1.0f, -1.0f, 0.0f, 1.0f, 0.0f, // right face
-     1.0f, -1.0f, -1.0f, -1.0f, -1.0f, -1.0f, 0.0f, 1.0f, 0.0f, // back face
-     -1.0f, -1.0f, -1.0f, -1.0f, -1.0f, 1.0f, 0.0f, 1.0f, 0.0f, // left face
-     -1.0f, -1.0f, -1.0f, 1.0f, -1.0f, 1.0f, -1.0f, -1.0f, 1.0f, // base – left front
-     1.0f, -1.0f, 1.0f, -1.0f, -1.0f, -1.0f, 1.0f, -1.0f, -1.0f // base – right back
+    { -2.0f, -2.0f, 2.0f, 2.0f, -2.0f, 2.0f, 0.0f, 2.0f, 0.0f, // front face
+     2.0f, -2.0f, 2.0f, 2.0f, -2.0f, -2.0f, 0.0f, 2.0f, 0.0f, // right face
+     2.0f, -2.0f, -2.0f, -2.0f, -2.0f, -2.0f, 0.0f, 2.0f, 0.0f, // back face
+     -2.0f, -2.0f, -2.0f, -2.0f, -2.0f, 2.0f, 0.0f, 2.0f, 0.0f, // left face
+     -2.0f, -2.0f, -2.0f, 2.0f, -2.0f, 2.0f, -2.0f, -2.0f, 2.0f, // base – left front
+     2.0f, -2.0f, 2.0f, -2.0f, -2.0f, -2.0f, 2.0f, -2.0f, -2.0f // base – right back
     };
 };
 

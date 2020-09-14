@@ -89,6 +89,7 @@ void Widget::on_hsdSegmentoY_actionTriggered(int action)
 
 void Widget::on_radioButton_4_clicked()
 {
+    std::cout<<"Hi"<<std::endl;
     ui->viewOpenGL->figura = 4;
     ui->viewOpenGL->update();
 }

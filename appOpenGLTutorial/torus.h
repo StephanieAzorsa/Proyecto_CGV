@@ -31,7 +31,9 @@ private:
 
     float toRadians(float degrees);
 public:
-
+    void initialize();
+    void draw();
+    GLuint VAO3, VBO3;
     Torus();
     Torus(float innerRadius, float outerRadius, int prec);
     int getNumVertices();
