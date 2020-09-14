@@ -1,3 +1,4 @@
+debug/cone.o
 debug/cube.o
 debug/main.o
 debug/modelimporter.o

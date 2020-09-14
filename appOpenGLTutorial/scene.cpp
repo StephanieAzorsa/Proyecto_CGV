@@ -123,6 +123,7 @@ void Scene::initializeGL()
     cubo = new Cube();
     pyramidx = new pyramid();
     torus = new Torus();
+    cone = new Cone();
 }
 
 //Renderiza las imágenes o formas
@@ -197,12 +198,12 @@ void Scene::paintGL()
         case 4:
         if (transparente) {
             f->glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de líneas
-            torus->draw();
+            cone->draw();
 
         }
         if (relleno) {
             f->glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de líneas
-            torus->draw();
+            cone->draw();
 
         }
         break;

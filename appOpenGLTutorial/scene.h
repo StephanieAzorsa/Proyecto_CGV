@@ -16,6 +16,7 @@
 #include "cube.h"
 #include "torus.h"
 #include "pyramid.h"
+#include "cone.h"
 
 class Scene : public QOpenGLWidget
 {
@@ -48,7 +49,7 @@ private:
     Cube *cubo;
     Torus *torus;
     pyramid *pyramidx;
-
+    Cone *cone;
     void initializeGL();
     void paintGL();
     void resizeGL( int w, int h );

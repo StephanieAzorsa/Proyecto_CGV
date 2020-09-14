@@ -9,6 +9,7 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    cone.cpp \
     cube.cpp \
     main.cpp \
     modelimporter.cpp \
@@ -21,6 +22,7 @@ SOURCES += \
     widget.cpp
 
 HEADERS += \
+    cone.h \
     cube.h \
     modelimporter.h \
     pyramid.h \
@@ -41,3 +43,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     shaders.qrc
+
+DISTFILES += \
+    shapes/cylinder.obj \
+    shapes/pyramid.obj

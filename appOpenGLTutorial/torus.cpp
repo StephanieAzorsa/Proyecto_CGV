@@ -20,7 +20,10 @@ Torus::Torus(float innerRadius, float outerRadius, int precIn) {
 float Torus::toRadians(float degrees) { return (degrees * 2.0f * 3.14159f) / 360.0f; }
 
 void Torus::init() {
-    numVertices = (prec + 1) * (prec + 1);
+
+
+
+    /*numVertices = (prec + 1) * (prec + 1);
         numIndices = prec * prec * 6;
         for (int i = 0; i < numVertices; i++) { vertices.push_back(QVector3D()); }
         for (int i = 0; i < numVertices; i++) { texCoords.push_back(QVector2D()); }
@@ -87,6 +90,7 @@ void Torus::init() {
                 indices[((ring*prec + i) * 2 + 1) * 3 + 2] = (ring + 1)*(prec + 1) + i + 1;
             }
         }
+        */
         initialize();
 }
 // accessors for the torus indices and vertices
