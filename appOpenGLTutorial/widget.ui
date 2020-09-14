@@ -2,67 +2,75 @@
 <ui version="4.0">
  <class>Widget</class>
  <widget class="QWidget" name="Widget">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>808</width>
-    <height>600</height>
+    <width>900</width>
+    <height>710</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <family>Montserrat</family>
+   </font>
+  </property>
   <property name="windowTitle">
-   <string>Widget</string>
+   <string>PROYECTO - CG</string>
   </property>
   <widget class="Scene" name="viewOpenGL">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>40</y>
-     <width>500</width>
-     <height>500</height>
+     <x>5</x>
+     <y>5</y>
+     <width>700</width>
+     <height>700</height>
     </rect>
    </property>
   </widget>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>600</x>
-     <y>80</y>
+     <x>720</x>
+     <y>410</y>
      <width>171</width>
-     <height>201</height>
+     <height>284</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="vlaoRotation">
     <item>
-     <widget class="QLabel" name="label_4">
-      <property name="font">
-       <font>
-        <family>Consolas</family>
-        <pointsize>13</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Rotation</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item>
      <layout class="QVBoxLayout" name="vlaoRotationX">
+      <item>
+       <widget class="QLabel" name="label_4">
+        <property name="font">
+         <font>
+          <family>Montserrat</family>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>CÁMARA</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
       <item>
        <widget class="QLabel" name="label">
         <property name="font">
          <font>
-          <family>Consolas</family>
+          <family>Montserrat</family>
           <pointsize>10</pointsize>
          </font>
         </property>
         <property name="text">
-         <string>Rotation X</string>
+         <string>Rotación Eje X</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -75,8 +83,8 @@
          <widget class="QLabel" name="label_5">
           <property name="font">
            <font>
-            <family>Consolas</family>
-            <pointsize>9</pointsize>
+            <family>Montserrat</family>
+            <pointsize>10</pointsize>
            </font>
           </property>
           <property name="text">
@@ -107,12 +115,12 @@
        <widget class="QLabel" name="label_2">
         <property name="font">
          <font>
-          <family>Consolas</family>
+          <family>Montserrat</family>
           <pointsize>10</pointsize>
          </font>
         </property>
         <property name="text">
-         <string>Rotation Y</string>
+         <string>Rotación Eje Y</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -125,8 +133,8 @@
          <widget class="QLabel" name="label_6">
           <property name="font">
            <font>
-            <family>Consolas</family>
-            <pointsize>9</pointsize>
+            <family>Montserrat</family>
+            <pointsize>10</pointsize>
            </font>
           </property>
           <property name="text">
@@ -157,12 +165,12 @@
        <widget class="QLabel" name="label_3">
         <property name="font">
          <font>
-          <family>Consolas</family>
+          <family>Montserrat</family>
           <pointsize>10</pointsize>
          </font>
         </property>
         <property name="text">
-         <string>Rotation Z</string>
+         <string>Rotación Eje Z</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -175,8 +183,8 @@
          <widget class="QLabel" name="label_7">
           <property name="font">
            <font>
-            <family>Consolas</family>
-            <pointsize>9</pointsize>
+            <family>Montserrat</family>
+            <pointsize>10</pointsize>
            </font>
           </property>
           <property name="text">
@@ -201,7 +209,370 @@
       </item>
      </layout>
     </item>
+    <item>
+     <layout class="QVBoxLayout" name="vlaoScale">
+      <item>
+       <widget class="QLabel" name="label_12">
+        <property name="font">
+         <font>
+          <family>Montserrat</family>
+          <pointsize>10</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Escala</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <item>
+         <widget class="QLabel" name="lblScale">
+          <property name="font">
+           <font>
+            <family>Montserrat</family>
+            <pointsize>10</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>100</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSlider" name="hsldScale">
+          <property name="minimum">
+           <number>10</number>
+          </property>
+          <property name="maximum">
+           <number>200</number>
+          </property>
+          <property name="sliderPosition">
+           <number>100</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
    </layout>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>720</x>
+     <y>150</y>
+     <width>171</width>
+     <height>136</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="vlaoShapes">
+    <item>
+     <widget class="QLabel" name="label_9">
+      <property name="font">
+       <font>
+        <family>Montserrat</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="text">
+       <string>FIGURAS</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="radioButton">
+      <property name="font">
+       <font>
+        <family>Montserrat</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Cubo</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="radioButton_2">
+      <property name="font">
+       <font>
+        <family>Montserrat</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Esfera</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="radioButton_3">
+      <property name="font">
+       <font>
+        <family>Montserrat</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Piramide</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="radioButton_4">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Especial</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>720</x>
+     <y>10</y>
+     <width>171</width>
+     <height>136</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="vlaoRender">
+    <item>
+     <widget class="QLabel" name="label_8">
+      <property name="font">
+       <font>
+        <family>Montserrat</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="text">
+       <string>RENDER</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QCheckBox" name="checkBoxTransparente">
+      <property name="font">
+       <font>
+        <family>Montserrat</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Estructura</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QCheckBox" name="checkBoxRelleno">
+      <property name="font">
+       <font>
+        <family>Montserrat</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Relleno</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QCheckBox" name="checkBoxNormal">
+      <property name="font">
+       <font>
+        <family>Montserrat</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Normal</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QCheckBox" name="checkBoxSuavizar">
+      <property name="font">
+       <font>
+        <family>Montserrat</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Suavizar</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>720</x>
+     <y>290</y>
+     <width>171</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="vlaoSegments">
+    <item>
+     <widget class="QLabel" name="label_11">
+      <property name="font">
+       <font>
+        <family>Montserrat</family>
+        <pointsize>10</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="text">
+       <string>SEGMENTOS X</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="hlaoSegmentX">
+      <item>
+       <widget class="QLabel" name="lblSegmentoX">
+        <property name="text">
+         <string>3</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSlider" name="hsdSegmentoX">
+        <property name="minimum">
+         <number>3</number>
+        </property>
+        <property name="maximum">
+         <number>200</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_13">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>SEGMENTOS Y</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="hlaoSegmentY">
+      <item>
+       <widget class="QLabel" name="lblSegmentoY">
+        <property name="text">
+         <string>3</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSlider" name="hsdSegmentoY">
+        <property name="minimum">
+         <number>3</number>
+        </property>
+        <property name="maximum">
+         <number>200</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="Line" name="line">
+   <property name="geometry">
+    <rect>
+     <x>720</x>
+     <y>400</y>
+     <width>171</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="Line" name="line_2">
+   <property name="geometry">
+    <rect>
+     <x>720</x>
+     <y>141</y>
+     <width>171</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
   </widget>
  </widget>
  <customwidgets>
@@ -220,12 +591,12 @@
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>633</x>
-     <y>163</y>
+     <x>749</x>
+     <y>501</y>
     </hint>
     <hint type="destinationlabel">
-     <x>609</x>
-     <y>163</y>
+     <x>669</x>
+     <y>501</y>
     </hint>
    </hints>
   </connection>
@@ -236,12 +607,12 @@
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>644</x>
-     <y>212</y>
+     <x>760</x>
+     <y>556</y>
     </hint>
     <hint type="destinationlabel">
-     <x>608</x>
-     <y>216</y>
+     <x>669</x>
+     <y>560</y>
     </hint>
    </hints>
   </connection>
@@ -252,12 +623,60 @@
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>634</x>
-     <y>264</y>
+     <x>750</x>
+     <y>628</y>
     </hint>
     <hint type="destinationlabel">
-     <x>607</x>
-     <y>266</y>
+     <x>669</x>
+     <y>628</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>hsldScale</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>lblScale</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>802</x>
+     <y>673</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>678</x>
+     <y>676</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>hsdSegmentoX</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>lblSegmentoX</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>700</x>
+     <y>357</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>663</x>
+     <y>356</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>hsdSegmentoY</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>lblSegmentoY</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>698</x>
+     <y>393</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>664</x>
+     <y>399</y>
     </hint>
    </hints>
   </connection>

@@ -1,13 +1,26 @@
 #include <QMatrix4x4>
 #include "scene.h"
-
+//Chau
 //Muestra la ventana de OpenGl donde se dibuja, es la escena donde se muestra las formas
-
+using namespace std;
 //Cconstructor que hereda las características de OpenGL
 Scene::Scene( QWidget *parent ) : QOpenGLWidget( parent )
 {
     this->setFocusPolicy( Qt::StrongFocus );
-    sphere = new Sphere(25); //Se instancia un objeto de la clase esfera
+    sphere = new Sphere(40); //Se instancia un objeto de la clase esfera
+    torus = new Torus(0.5f, 0.2f, 48); //Se instancia un objeto de la clase toroide
+    this->figura = 0;
+    //this->cubo = new Cube();
+
+    this->rotateX = 0.0;
+    this->rotateY = 0.0;
+    this->rotateZ = 0.0;
+
+    this->scale = 100.0;
+    this->transparente = false;
+    this->relleno = false;
+    this->segmentoX = 3;
+    this->segmentoY = 3;
 }
 
 //Destructor de la clase
@@ -15,6 +28,7 @@ Scene::~Scene()
 {
     delete m_triangle;
     delete sphere;
+    delete torus;
 }
 
 //Sirve para realizar la inicialización de recursos OpenGL
@@ -28,14 +42,20 @@ void Scene::initializeGL()
     //f-> es un operador para el acceso de miembros de un objeto,
     //    en este caso se esta accediendo a funciones de OpenGl 4.3
     f->glClearColor( 0.1f, 0.1f, 0.2f, 1.0f ); //Da el color a la ventana
-    f->glGenVertexArrays(1,VAOs); // parámetros: (#VAOs, VAOs)
-    f->glGenBuffers(1,VBOs);
+
+
+    //std::vector<int> ind = sphere->getIndices(); //Se obtiene el arreglo de indices de los vértices de la esfera
+    //std::vector<QVector3D> vert = sphere->getVertices(); //Retorna todos los puntos de la esfera en un arreglo de 3
+    std::vector<float> pvalues; //Se guarda los verdices retornados
 
     std::vector<int> ind = sphere->getIndices(); //Se obtiene el arreglo de indices de los vértices de la esfera
     std::vector<QVector3D> vert = sphere->getVertices(); //Retorna todos los puntos de la esfera en un arreglo de 3
-    std::vector<float> pvalues; //Se guarda los verdices retornados
+    //std::vector<float> pvalues; //Se guarda los verdices retornados
 
-    int numIndices = sphere->getNumIndices(); //Obtiene el número de índices, el tamaño, la cantidad
+    //int numIndices = sphere->getNumIndices(); //Obtiene el número de índices, el tamaño, la cantidad
+    //int numIndices = sphere->getNumIndices();
+    int numIndices = sphere->getNumIndices();
+  //  qWarning( "Halp" + numIndices);
     //Para obtener los puntos de los vectores en 3D y guardar cada punto en un arreglo de tipo float
     for (int i = 0; i < numIndices; i++) {
         pvalues.push_back((vert[ind[i]]).x());
@@ -43,8 +63,14 @@ void Scene::initializeGL()
         pvalues.push_back((vert[ind[i]]).z());
     }
 
-    //VAOs for SPHERE
+
+    f->glGenVertexArrays(1,VAOs); // parámetros: (#VAOs, VAOs)
     f->glBindVertexArray(VAOs[0]); //Enlaza el VAO
+
+    //f->glGenBuffers(1,VBOs);
+    f->glGenBuffers(1,VBOs);
+    //VAOs for SPHERE
+
     f->glBindBuffer(GL_ARRAY_BUFFER,VBOs[0]); //Enlaza el VBO
 
     //Se especifica el tamaño y se manda como parámetro el tamaño y la cantidad
@@ -54,6 +80,8 @@ void Scene::initializeGL()
     //Describe cómo se distribuyen los datos, ya que los datos están vinculados a GL_ARRAY_BUFFER
     //y este descriptor se guarda en nuestra matriz de vértices
     f->glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,3*sizeof(float),(void*)0);
+
+
 
     //habilita el índice de atributo para el atributo de posición.
     //Si el atributo no está habilitado, no se utilizará durante el renderizado.
@@ -92,6 +120,8 @@ void Scene::initializeGL()
 
     //Se instancia un objeto de la clase Triangle
     //m_triangle = new Triangle( &m_program, m_vertexAttr, m_colorAttr );
+    cubo = new Cube();
+    pyramidx = new pyramid();
 }
 
 //Renderiza las imágenes o formas
@@ -102,27 +132,85 @@ void Scene::paintGL()
 
     //bind: vincula el programa de shader al contexto actual, y lo convierte al porgrama de shader actual
     //Es equivalente a llamar al glUseProgram()
+    //sphere = new Sphere(segmentoX);
+
     if ( !m_program.bind() )
         return;
 
     QMatrix4x4 matrix; //se declara la matrix
 
     matrix.ortho( -8.0f, 8.0f, -8.0f, 8.0f, 8.0f, -8.0f ); //Para la cámara
+    //matrix.perspective(1.0472*(180.0/(3.1415)), 4.0/3.0, 0.1, 100.0); //Para la cámara
+    //matrix.lookAt(QVector3D(4.0,4.0,4.0),QVector3D(0,0,0),QVector3D(0,5,0)); //Para la cámara
     matrix.translate( 0.0f, 0.0f, 0.0f ); //Mover la forma renderizada al origen
-    //matrix.perspective();
 
     //Para las rotaciones en el eje x, y, z
     matrix.rotate(float(rotateX), 1.0f, 0.0f, 0.0f);
     matrix.rotate(float(rotateY), 0.0f, 1.0f, 0.0f);
     matrix.rotate(float(rotateZ), 0.0f, 0.0f, 1.0f);
 
+    matrix.scale(float(scale)/100.0);
+
     //setUniformValue: establece la variable uniform en la ubicación en el contexto actual
     m_program.setUniformValue( m_matrixUniform, matrix ); //Permite la asignación de las operaciones de transformación y asignarlas al shader
 
     //m_triangle->draw();
-    f->glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de líneas
-    f->glBindVertexArray(VAOs[0]);
-    f->glDrawArrays(GL_TRIANGLES, 0, sphere->getNumIndices());
+    switch (figura) {
+        case 1:
+        if (transparente) {
+            f->glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de líneas
+            cubo->draw();
+        }
+        if (relleno) {
+            f->glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+            cubo->draw();
+        }
+        break;
+
+        case 2:
+        if (transparente) {
+            f->glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de líneas
+            f->glBindVertexArray(VAOs[0]);
+            f->glDrawArrays(GL_TRIANGLES, 0, sphere->getNumIndices());
+
+        }
+        if (relleno) {
+            f->glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de relleno
+            f->glBindVertexArray(VAOs[0]);
+           f->glDrawArrays(GL_TRIANGLES, 0, sphere->getNumIndices());
+
+        }
+        break;
+
+        case 3:
+        if (transparente) {
+            f->glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de líneas
+            pyramidx->draw();
+        }
+        if (relleno) {
+            f->glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+            pyramidx->draw();
+        }
+        break;
+
+        case 4:
+        if (transparente) {
+            f->glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de líneas
+            f->glBindVertexArray(VAOs[0]);
+            f->glDrawArrays(GL_TRIANGLES, 0, torus->getNumIndices());
+
+        }
+        if (relleno) {
+            f->glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de relleno
+            f->glBindVertexArray(VAOs[0]);
+           f->glDrawArrays(GL_TRIANGLES, 0, torus->getNumIndices());
+
+        }
+    }
+
+    //f->glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de líneas
+    //f->glBindVertexArray(VAOs[0]);
+    //f->glDrawArrays(GL_TRIANGLES, 0, sphere->getNumIndices());
 
     m_program.release(); //libera el programa del shader activo del contexto actual
 }
@@ -161,9 +249,15 @@ void Scene::keyPressEvent( QKeyEvent *event )
 }
 
 //Métodos de acceso de los atributos privados para realizar las rotaciones, en las 3 direcciones
-void Scene::setRotateX(float x){rotateX=x;}
-void Scene::setRotateY(float y){rotateY=y;}
-void Scene::setRotateZ(float z){rotateZ=z;}
+void Scene::setRotateX(float x){rotateX = x;}
+void Scene::setRotateY(float y){rotateY = y;}
+void Scene::setRotateZ(float z){rotateZ = z;}
 float Scene::getrotateX()const{return rotateX;}
 float Scene::getrotateY()const{return rotateY;}
 float Scene::getrotateZ()const{return rotateZ;}
+void Scene::setscala(float s){scale = s;}
+float Scene::getscala()const{return scale;}
+void Scene::setsegmentoX(int seg){segmentoX = seg;}
+void Scene::setsegmentoY(int seg){segmentoY = seg;}
+int Scene::getsegmentoX()const{return segmentoX;}
+int Scene::getsegmentoY()const{return segmentoY;}

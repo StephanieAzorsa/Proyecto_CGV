@@ -1,7 +1,6 @@
 #ifndef SCENE_H
 #define SCENE_H
 
-
 #include <QKeyEvent>
 #include "Triangle.h"
 #include <QWidget>
@@ -14,6 +13,9 @@
 #include <QOpenGLWidget>
 #include <QOpenGLShaderProgram>
 #include "sphere.h"
+#include "cube.h"
+#include "torus.h"
+#include "pyramid.h"
 
 class Scene : public QOpenGLWidget
 {
@@ -27,9 +29,25 @@ public:
     float getrotateY()const;
     float getrotateZ()const;
 
+    void setscala(float s);
+    float getscala()const;
+
+    void setsegmentoX(int seg);
+    void setsegmentoY(int seg);
+    int getsegmentoX()const;
+    int getsegmentoY()const;
+
+    int figura;
+
+    bool relleno;
+    bool transparente;
+
 private:
-    unsigned int VBOs[1],VAOs[1];
+    unsigned int VBOs[2],VAOs[1];
     Sphere *sphere;
+    Cube *cubo;
+    Torus *torus;
+    pyramid *pyramidx;
 
     void initializeGL();
     void paintGL();
@@ -45,10 +63,14 @@ private:
     int m_colorAttr;
     int m_matrixUniform;
 
-
     float rotateX;
     float rotateY;
     float rotateZ;
+
+    float scale;
+
+    int segmentoX;
+    int segmentoY;
 };
 
 #endif // SCENE_H

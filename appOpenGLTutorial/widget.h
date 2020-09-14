@@ -2,7 +2,7 @@
 #define WIDGET_H
 
 #include <QWidget>
-#include <QOpenGLFunctions_4_0_Core>
+#include <QOpenGLFunctions_4_3_Core>
 #include <QOpenGLContext>
 #include <QOpenGLShaderProgram>
 #include <QOpenGLBuffer>
@@ -30,6 +30,24 @@ private slots:
     void on_hsldRotateY_actionTriggered(int action);
 
     void on_hsldRotateZ_actionTriggered(int action);
+
+    void on_radioButton_clicked();
+
+    void on_radioButton_2_clicked();
+
+    void on_hsldScale_actionTriggered(int action);
+
+    void on_checkBoxTransparente_stateChanged(int arg1);
+
+    void on_checkBoxRelleno_stateChanged(int arg1);
+
+    void on_hsdSegmentoX_actionTriggered(int action);
+
+    void on_hsdSegmentoY_actionTriggered(int action);
+
+    void on_radioButton_3_clicked();
+
+    void on_radioButton_4_clicked();
 
 private:
     Ui::Widget *ui;

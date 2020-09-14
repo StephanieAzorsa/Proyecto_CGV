@@ -9,20 +9,26 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    cube.cpp \
     main.cpp \
     modelimporter.cpp \
+    pyramid.cpp \
     scene.cpp \
     sphere.cpp \
     triangle.cpp \
     utils.cpp \
+    torus.cpp \
     widget.cpp
 
 HEADERS += \
+    cube.h \
     modelimporter.h \
+    pyramid.h \
     scene.h \
     sphere.h \
     triangle.h \
     utils.h \
+    torus.h \
     widget.h
 
 FORMS += \

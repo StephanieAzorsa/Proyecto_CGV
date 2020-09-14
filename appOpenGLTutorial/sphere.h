@@ -7,18 +7,16 @@
 #include <QVector2D>
 #include<string>
 
-using namespace std;
-
 class Sphere
 {
 private:
     int numVertices;
     int numIndices;
-    vector<int> indices;
-    vector<QVector3D> vertices;
-    vector<QVector2D> texCoords;
-    vector<QVector3D> normals;
-    vector<QVector3D> tangents;
+    std::vector<int> indices;
+    std::vector<QVector3D> vertices;
+    std::vector<QVector2D> texCoords;
+    std::vector<QVector3D> normals;
+    std::vector<QVector3D> tangents;
     void init(int);
     float toRadians(float degrees);
 
@@ -27,10 +25,10 @@ public:
     Sphere(int prec);
     int getNumVertices();
     int getNumIndices();
-    vector<int> getIndices();
-    vector<QVector3D> getVertices();
-    vector<QVector2D> getTexCoords();
-    vector<QVector3D> getNormals();
-    vector<QVector3D> getTangents();
+    std::vector<int> getIndices();
+    std::vector<QVector3D> getVertices();
+    std::vector<QVector2D> getTexCoords();
+    std::vector<QVector3D> getNormals();
+    std::vector<QVector3D> getTangents();
 };
 #endif /* SPHERE_H_ */

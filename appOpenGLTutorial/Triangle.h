@@ -25,10 +25,6 @@ public:
     float x0() const;
     float y0() const;
 
-
-
-
-
 private:
     void initVertices();
     void initColors();

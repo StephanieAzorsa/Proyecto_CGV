@@ -36,3 +36,59 @@ void Widget::on_hsldRotateZ_actionTriggered(int action)
     ui->viewOpenGL->setRotateZ(ui->hsldRotateZ->value());
     ui->viewOpenGL->update();
 }
+
+void Widget::on_radioButton_clicked()
+{
+    ui->viewOpenGL->figura = 1;
+    ui->viewOpenGL->update();
+}
+
+void Widget::on_radioButton_2_clicked()
+{
+    ui->viewOpenGL->figura = 2;
+    ui->viewOpenGL->update();
+}
+
+void Widget::on_radioButton_3_clicked()
+{
+    ui->viewOpenGL->figura = 3;
+    ui->viewOpenGL->update();
+}
+
+void Widget::on_hsldScale_actionTriggered(int action)
+{
+    std::cout<<"ESCALA: "<<ui->hsldScale->value()<<std::endl;
+    ui->viewOpenGL->setscala(ui->hsldScale->value());
+    ui->viewOpenGL->update();
+}
+
+void Widget::on_checkBoxTransparente_stateChanged(int arg1)
+{
+    ui->viewOpenGL->transparente = arg1;
+    ui->viewOpenGL->update();
+}
+
+void Widget::on_checkBoxRelleno_stateChanged(int arg1)
+{
+    ui->viewOpenGL->relleno = arg1;
+    ui->viewOpenGL->update();
+}
+
+void Widget::on_hsdSegmentoX_actionTriggered(int action)
+{
+    ui->viewOpenGL->setsegmentoX(ui->hsdSegmentoX->value());
+    ui->viewOpenGL->update();
+}
+
+void Widget::on_hsdSegmentoY_actionTriggered(int action)
+{
+
+}
+
+
+
+void Widget::on_radioButton_4_clicked()
+{
+    ui->viewOpenGL->figura = 4;
+    ui->viewOpenGL->update();
+}

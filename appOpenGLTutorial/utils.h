@@ -20,11 +20,10 @@
 #include <cmath>
 #include <vector>
 
-using namespace std;
 class Utils
 {
 private:
-    static string readShaderFile(const char* filePath);
+    static std::string readShaderFile(const char* filePath);
     static void printShaderLog(GLuint shader);
     static void printProgramLog(int prog);
     static GLuint prepareShader(int shaderTYPE, const char* shaderPath);
