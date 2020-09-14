@@ -44,15 +44,16 @@ void Scene::initializeGL()
     f->glClearColor( 0.1f, 0.1f, 0.2f, 1.0f ); //Da el color a la ventana
 
 
-    std::vector<int> ind = sphere->getIndices(); //Se obtiene el arreglo de indices de los vértices de la esfera
-    std::vector<QVector3D> vert = sphere->getVertices(); //Retorna todos los puntos de la esfera en un arreglo de 3
+    //std::vector<int> ind = sphere->getIndices(); //Se obtiene el arreglo de indices de los vértices de la esfera
+    //std::vector<QVector3D> vert = sphere->getVertices(); //Retorna todos los puntos de la esfera en un arreglo de 3
     std::vector<float> pvalues; //Se guarda los verdices retornados
 
-    //std::vector<int> ind = torus->getIndices(); //Se obtiene el arreglo de indices de los vértices de la esfera
-    //std::vector<QVector3D> vert = torus->getVertices(); //Retorna todos los puntos de la esfera en un arreglo de 3
+    std::vector<int> ind = sphere->getIndices(); //Se obtiene el arreglo de indices de los vértices de la esfera
+    std::vector<QVector3D> vert = sphere->getVertices(); //Retorna todos los puntos de la esfera en un arreglo de 3
     //std::vector<float> pvalues; //Se guarda los verdices retornados
 
     //int numIndices = sphere->getNumIndices(); //Obtiene el número de índices, el tamaño, la cantidad
+    //int numIndices = sphere->getNumIndices();
     int numIndices = sphere->getNumIndices();
   //  qWarning( "Halp" + numIndices);
     //Para obtener los puntos de los vectores en 3D y guardar cada punto en un arreglo de tipo float
@@ -181,8 +182,6 @@ void Scene::paintGL()
         }
         break;
 
-
-
         case 3:
         if (transparente) {
             f->glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de líneas
@@ -193,6 +192,20 @@ void Scene::paintGL()
             pyramidx->draw();
         }
         break;
+
+        case 4:
+        if (transparente) {
+            f->glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de líneas
+            f->glBindVertexArray(VAOs[0]);
+            f->glDrawArrays(GL_TRIANGLES, 0, torus->getNumIndices());
+
+        }
+        if (relleno) {
+            f->glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de relleno
+            f->glBindVertexArray(VAOs[0]);
+           f->glDrawArrays(GL_TRIANGLES, 0, torus->getNumIndices());
+
+        }
     }
 
     //f->glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de líneas

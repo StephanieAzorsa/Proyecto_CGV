@@ -3,6 +3,7 @@
 #include <cmath>
 #include <vector>
 #include <QVector3D>
+#include <QMatrix4x4>
 #include <QOpenGLFunctions_4_0_Core>
 #include <QOpenGLContext>
 #include <QOpenGLBuffer>
@@ -26,6 +27,7 @@ private:
     std::vector<QVector3D> sTangents;
     std::vector<QVector3D> tTangents;
     void init();
+    //QMatrix4x4 rMat;
 
     float toRadians(float degrees);
 public:

@@ -47,6 +47,8 @@ private slots:
 
     void on_radioButton_3_clicked();
 
+    void on_radioButton_4_clicked();
+
 private:
     Ui::Widget *ui;
 };
