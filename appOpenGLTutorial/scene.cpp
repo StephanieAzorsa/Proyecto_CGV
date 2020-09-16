@@ -28,7 +28,7 @@ Scene::~Scene()
 {
     delete m_triangle;
     delete sphere;
-    delete torus;
+   // delete torus;
 }
 
 //Sirve para realizar la inicialización de recursos OpenGL

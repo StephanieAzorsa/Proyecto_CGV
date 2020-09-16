@@ -30,6 +30,7 @@ void Sphere::init(int prec) {
             float x = -(float)cos(toRadians(j*360.0f / prec))*(float)abs(cos(asin(y)));
             float z = (float)sin(toRadians(j*360.0f / (float)(prec)))*(float)abs(cos(asin(y)));
             vertices[i*(prec + 1) + j] = QVector3D(2.5*x, 2.5*y, 2.5*z);
+            //vertices[i*(prec + 1) + j] = QVector3D(x, y, z);
             texCoords[i*(prec + 1) + j] = QVector2D(((float)j / prec), ((float)i / prec));
             normals[i*(prec + 1) + j] = QVector3D(x, y, z);
 
