@@ -1,5 +1,6 @@
 release/cone.o
 release/cube.o
+release/glm.o
 release/main.o
 release/modelimporter.o
 release/pyramid.o

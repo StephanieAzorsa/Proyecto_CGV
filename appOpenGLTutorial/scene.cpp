@@ -207,6 +207,19 @@ void Scene::paintGL()
 
         }
         break;
+
+        case 5:
+        if (transparente) {
+            f->glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de líneas
+            torus->initialize();
+            torus->draw();
+        }
+        if (relleno) {
+            f->glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de líneas
+            torus->initialize();
+            torus->draw();
+        }
+        break;
     }
 
     //f->glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de líneas

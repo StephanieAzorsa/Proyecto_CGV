@@ -57,6 +57,7 @@ public:
     QRadioButton *radioButton_2;
     QRadioButton *radioButton_3;
     QRadioButton *radioButton_4;
+    QRadioButton *radioButton_5;
     QWidget *layoutWidget2;
     QVBoxLayout *vlaoRender;
     QLabel *label_8;
@@ -76,13 +77,14 @@ public:
     QSlider *hsdSegmentoY;
     QFrame *line;
     QFrame *line_2;
+    QFrame *line_3;
 
     void setupUi(QWidget *Widget)
     {
         if (Widget->objectName().isEmpty())
             Widget->setObjectName(QString::fromUtf8("Widget"));
         Widget->setEnabled(true);
-        Widget->resize(900, 710);
+        Widget->resize(1097, 710);
         QFont font;
         font.setFamily(QString::fromUtf8("Montserrat"));
         Widget->setFont(font);
@@ -91,7 +93,7 @@ public:
         viewOpenGL->setGeometry(QRect(5, 5, 700, 700));
         layoutWidget = new QWidget(Widget);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(720, 410, 171, 284));
+        layoutWidget->setGeometry(QRect(720, 350, 361, 284));
         vlaoRotation = new QVBoxLayout(layoutWidget);
         vlaoRotation->setObjectName(QString::fromUtf8("vlaoRotation"));
         vlaoRotation->setContentsMargins(0, 0, 0, 0);
@@ -243,7 +245,7 @@ public:
 
         layoutWidget1 = new QWidget(Widget);
         layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(720, 150, 171, 136));
+        layoutWidget1->setGeometry(QRect(910, 20, 171, 161));
         vlaoShapes = new QVBoxLayout(layoutWidget1);
         vlaoShapes->setObjectName(QString::fromUtf8("vlaoShapes"));
         vlaoShapes->setContentsMargins(0, 0, 0, 0);
@@ -275,15 +277,19 @@ public:
 
         radioButton_4 = new QRadioButton(layoutWidget1);
         radioButton_4->setObjectName(QString::fromUtf8("radioButton_4"));
-        QFont font4;
-        font4.setPointSize(10);
-        radioButton_4->setFont(font4);
+        radioButton_4->setFont(font2);
 
         vlaoShapes->addWidget(radioButton_4);
 
+        radioButton_5 = new QRadioButton(layoutWidget1);
+        radioButton_5->setObjectName(QString::fromUtf8("radioButton_5"));
+        radioButton_5->setFont(font2);
+
+        vlaoShapes->addWidget(radioButton_5);
+
         layoutWidget2 = new QWidget(Widget);
         layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
-        layoutWidget2->setGeometry(QRect(720, 10, 171, 136));
+        layoutWidget2->setGeometry(QRect(720, 20, 171, 136));
         vlaoRender = new QVBoxLayout(layoutWidget2);
         vlaoRender->setObjectName(QString::fromUtf8("vlaoRender"));
         vlaoRender->setContentsMargins(0, 0, 0, 0);
@@ -321,7 +327,7 @@ public:
 
         layoutWidget3 = new QWidget(Widget);
         layoutWidget3->setObjectName(QString::fromUtf8("layoutWidget3"));
-        layoutWidget3->setGeometry(QRect(720, 290, 171, 111));
+        layoutWidget3->setGeometry(QRect(720, 210, 361, 111));
         vlaoSegments = new QVBoxLayout(layoutWidget3);
         vlaoSegments->setObjectName(QString::fromUtf8("vlaoSegments"));
         vlaoSegments->setContentsMargins(0, 0, 0, 0);
@@ -353,7 +359,7 @@ public:
 
         label_13 = new QLabel(layoutWidget3);
         label_13->setObjectName(QString::fromUtf8("label_13"));
-        label_13->setFont(font4);
+        label_13->setFont(font2);
         label_13->setAlignment(Qt::AlignCenter);
 
         vlaoSegments->addWidget(label_13);
@@ -378,19 +384,26 @@ public:
 
         line = new QFrame(Widget);
         line->setObjectName(QString::fromUtf8("line"));
-        line->setGeometry(QRect(720, 400, 171, 16));
-        QFont font5;
-        font5.setBold(true);
-        font5.setWeight(75);
-        line->setFont(font5);
+        line->setGeometry(QRect(720, 330, 361, 16));
+        QFont font4;
+        font4.setFamily(QString::fromUtf8("Montserrat"));
+        font4.setBold(true);
+        font4.setWeight(75);
+        line->setFont(font4);
         line->setFrameShape(QFrame::HLine);
         line->setFrameShadow(QFrame::Sunken);
         line_2 = new QFrame(Widget);
         line_2->setObjectName(QString::fromUtf8("line_2"));
-        line_2->setGeometry(QRect(720, 141, 171, 16));
-        line_2->setFont(font5);
+        line_2->setGeometry(QRect(720, 190, 361, 16));
+        line_2->setFont(font4);
         line_2->setFrameShape(QFrame::HLine);
         line_2->setFrameShadow(QFrame::Sunken);
+        line_3 = new QFrame(Widget);
+        line_3->setObjectName(QString::fromUtf8("line_3"));
+        line_3->setGeometry(QRect(720, 0, 361, 16));
+        line_3->setFont(font4);
+        line_3->setFrameShape(QFrame::HLine);
+        line_3->setFrameShadow(QFrame::Sunken);
 
         retranslateUi(Widget);
         QObject::connect(hsldRotateX, SIGNAL(valueChanged(int)), label_5, SLOT(setNum(int)));
@@ -419,7 +432,8 @@ public:
         radioButton->setText(QCoreApplication::translate("Widget", "Cubo", nullptr));
         radioButton_2->setText(QCoreApplication::translate("Widget", "Esfera", nullptr));
         radioButton_3->setText(QCoreApplication::translate("Widget", "Piramide", nullptr));
-        radioButton_4->setText(QCoreApplication::translate("Widget", "Especial", nullptr));
+        radioButton_4->setText(QCoreApplication::translate("Widget", "Cono", nullptr));
+        radioButton_5->setText(QCoreApplication::translate("Widget", "Especial", nullptr));
         label_8->setText(QCoreApplication::translate("Widget", "RENDER", nullptr));
         checkBoxTransparente->setText(QCoreApplication::translate("Widget", "Estructura", nullptr));
         checkBoxRelleno->setText(QCoreApplication::translate("Widget", "Relleno", nullptr));
