@@ -55,6 +55,18 @@ void Widget::on_radioButton_3_clicked()
     ui->viewOpenGL->update();
 }
 
+void Widget::on_radioButton_4_clicked()
+{
+    ui->viewOpenGL->figura = 4;
+    ui->viewOpenGL->update();
+}
+
+void Widget::on_radioButton_5_clicked()
+{
+    ui->viewOpenGL->figura = 5;
+    ui->viewOpenGL->update();
+}
+
 void Widget::on_hsldScale_actionTriggered(int action)
 {
     std::cout<<"ESCALA: "<<ui->hsldScale->value()<<std::endl;
@@ -85,11 +97,3 @@ void Widget::on_hsdSegmentoY_actionTriggered(int action)
 
 }
 
-
-
-void Widget::on_radioButton_4_clicked()
-{
-    std::cout<<"Hi"<<std::endl;
-    ui->viewOpenGL->figura = 4;
-    ui->viewOpenGL->update();
-}

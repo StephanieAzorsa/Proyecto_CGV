@@ -1,5 +1,6 @@
 debug/cone.o
 debug/cube.o
+debug/glm.o
 debug/main.o
 debug/modelimporter.o
 debug/pyramid.o

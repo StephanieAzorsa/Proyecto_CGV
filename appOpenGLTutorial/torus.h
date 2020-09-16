@@ -1,17 +1,18 @@
 #ifndef TORUS_H
 #define TORUS_H
+
+// Include GLM
+#include <glm/glm.hpp>
+
 #include <cmath>
 #include <vector>
-#include <QVector3D>
-#include <QMatrix4x4>
 #include <QOpenGLFunctions_4_0_Core>
 #include <QOpenGLContext>
 #include <QOpenGLBuffer>
 #include <QOpenGLVertexArrayObject>
-
-#include <QVector2D>
 #include<string>
 using namespace std;
+
 class Torus
 {
 private:
@@ -21,28 +22,28 @@ private:
     float inner;
     float outer;
     std::vector<int> indices;
-    std::vector<QVector3D>vertices;
-    std::vector<QVector2D> texCoords;
-    std::vector<QVector3D> normals;
-    std::vector<QVector3D> sTangents;
-    std::vector<QVector3D> tTangents;
+    std::vector<glm::vec3> vertices;
+    std::vector<glm::vec2> texCoords;
+    std::vector<glm::vec3> normals;
+    std::vector<glm::vec3> sTangents;
+    std::vector<glm::vec3> tTangents;
     void init();
-    //QMatrix4x4 rMat;
-
     float toRadians(float degrees);
+
 public:
-    void initialize();
-    void draw();
-    GLuint VAO3, VBO3;
     Torus();
     Torus(float innerRadius, float outerRadius, int prec);
     int getNumVertices();
     int getNumIndices();
     std::vector<int> getIndices();
-    std::vector<QVector3D> getVertices();
-    std::vector<QVector2D> getTexCoords();
-    std::vector<QVector3D> getNormals();
-    std::vector<QVector3D> getStangents();
-    std::vector<QVector3D> getTtangents();
+    std::vector<glm::vec3> getVertices();
+    std::vector<glm::vec2> getTexCoords();
+    std::vector<glm::vec3> getNormals();
+    std::vector<glm::vec3> getStangents();
+    std::vector<glm::vec3> getTtangents();
+    void initialize();
+    void draw();
+    unsigned int VBOt[4],VAOt[1];
 };
+
 #endif // TORUS_H
