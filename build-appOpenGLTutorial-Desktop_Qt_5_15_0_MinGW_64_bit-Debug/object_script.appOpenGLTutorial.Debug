@@ -1,0 +1,15 @@
+debug/cone.o
+debug/cube.o
+debug/cylinder.o
+debug/glm.o
+debug/main.o
+debug/modelimporter.o
+debug/pyramid.o
+debug/scene.o
+debug/sphere.o
+debug/triangle.o
+debug/utils.o
+debug/torus.o
+debug/widget.o
+debug/qrc_shaders.o
+debug/moc_widget.o
