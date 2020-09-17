@@ -15,6 +15,7 @@
 #include "sphere.h"
 #include "cube.h"
 #include "torus.h"
+#include "cylinder.h"
 #include "pyramid.h"
 #include "cone.h"
 
@@ -49,6 +50,7 @@ private:
     Cube *cubo;
     Torus *torus;
     pyramid *pyramidx;
+    Cylinder * cylinder;
     Cone *cone;
     void initializeGL();
     void paintGL();

@@ -11,6 +11,7 @@ CONFIG += c++11
 SOURCES += \
     cone.cpp \
     cube.cpp \
+    cylinder.cpp \
     glm/detail/glm.cpp \
     main.cpp \
     modelimporter.cpp \
@@ -25,6 +26,7 @@ SOURCES += \
 HEADERS += \
     cone.h \
     cube.h \
+    cylinder.h \
     glm/common.hpp \
     glm/detail/_features.hpp \
     glm/detail/_fixes.hpp \

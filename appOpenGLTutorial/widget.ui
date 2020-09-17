@@ -35,7 +35,7 @@
    <property name="geometry">
     <rect>
      <x>720</x>
-     <y>350</y>
+     <y>400</y>
      <width>361</width>
      <height>284</height>
     </rect>
@@ -277,7 +277,7 @@
      <x>910</x>
      <y>20</y>
      <width>171</width>
-     <height>161</height>
+     <height>192</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="vlaoShapes">
@@ -351,6 +351,18 @@
       </property>
       <property name="text">
        <string>Cono</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="radioButton_6">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Cilindro</string>
       </property>
      </widget>
     </item>
@@ -458,7 +470,7 @@
    <property name="geometry">
     <rect>
      <x>720</x>
-     <y>210</y>
+     <y>250</y>
      <width>361</width>
      <height>111</height>
     </rect>
@@ -555,7 +567,7 @@
    <property name="geometry">
     <rect>
      <x>720</x>
-     <y>330</y>
+     <y>370</y>
      <width>361</width>
      <height>16</height>
     </rect>
@@ -575,7 +587,7 @@
    <property name="geometry">
     <rect>
      <x>720</x>
-     <y>190</y>
+     <y>220</y>
      <width>361</width>
      <height>16</height>
     </rect>

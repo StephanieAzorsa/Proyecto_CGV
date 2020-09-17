@@ -63,7 +63,7 @@ void Widget::on_radioButton_4_clicked()
 
 void Widget::on_radioButton_5_clicked()
 {
-    ui->viewOpenGL->figura = 5;
+    ui->viewOpenGL->figura = 6;
     ui->viewOpenGL->update();
 }
 
@@ -97,3 +97,9 @@ void Widget::on_hsdSegmentoY_actionTriggered(int action)
 
 }
 
+
+void Widget::on_radioButton_6_clicked()
+{
+    ui->viewOpenGL->figura = 5;
+    ui->viewOpenGL->update();
+}

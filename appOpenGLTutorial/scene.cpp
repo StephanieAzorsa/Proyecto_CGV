@@ -124,6 +124,7 @@ void Scene::initializeGL()
     pyramidx = new pyramid();
     torus = new Torus();
     cone = new Cone();
+    cylinder = new Cylinder();
 }
 
 //Renderiza las imágenes o formas
@@ -194,21 +195,34 @@ void Scene::paintGL()
             pyramidx->draw();
         }
         break;
+    case 4:
+    if (transparente) {
+        f->glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de líneas
 
-        case 4:
+        cone->draw();
+
+    }
+    if (relleno) {
+        f->glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de líneas
+        cone->draw();
+
+    }
+    break;
+        case 5:
         if (transparente) {
             f->glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de líneas
-            cone->draw();
+
+            cylinder->draw();
 
         }
         if (relleno) {
             f->glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de líneas
-            cone->draw();
+            cylinder->draw();
 
         }
         break;
 
-        case 5:
+        case 6:
         if (transparente) {
             f->glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de líneas
             torus->initialize();
