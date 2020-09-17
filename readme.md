@@ -1,4 +1,4 @@
 # CG_PROYECTO FINAL
-##💻 Preview
+## 💻 Preview
 
 ![](docs/proyecto.gif)
