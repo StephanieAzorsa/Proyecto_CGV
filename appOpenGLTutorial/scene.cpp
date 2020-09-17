@@ -19,8 +19,8 @@ Scene::Scene( QWidget *parent ) : QOpenGLWidget( parent )
     this->scale = 100.0;
     this->transparente = false;
     this->relleno = false;
-    this->segmentoX = 3;
-    this->segmentoY = 3;
+    this->segmentoX = 33;
+    this->segmentoY = 33;
 }
 
 //Destructor de la clase
@@ -224,14 +224,16 @@ void Scene::paintGL()
 
         case 6:
         if (transparente) {
+            Torus torus_e(1.5f, 0.8f, segmentoX);
             f->glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de líneas
-            torus->initialize();
-            torus->draw();
+            torus->initialize(torus_e);
+            torus->draw(torus_e);
         }
         if (relleno) {
+            Torus torus_e(1.5f, 0.8f, segmentoX);
             f->glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); //controla la interpretación de polígonos, la forma en que se muestra el renderizado, en este caso un renderizado de líneas
-            torus->initialize();
-            torus->draw();
+            torus->initialize(torus_e);
+            torus->draw(torus_e);
         }
         break;
     }

@@ -41,8 +41,8 @@ public:
     std::vector<glm::vec3> getNormals();
     std::vector<glm::vec3> getStangents();
     std::vector<glm::vec3> getTtangents();
-    void initialize();
-    void draw();
+    void initialize(Torus myTorus);
+    void draw(Torus myTorus);
     unsigned int VBOt[4],VAOt[1];
 };
 

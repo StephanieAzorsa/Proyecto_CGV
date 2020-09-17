@@ -88,6 +88,7 @@ void Widget::on_checkBoxRelleno_stateChanged(int arg1)
 
 void Widget::on_hsdSegmentoX_actionTriggered(int action)
 {
+    std::cout<<"SEGMENTO X: "<<ui->hsdSegmentoX->value()<<std::endl;
     ui->viewOpenGL->setsegmentoX(ui->hsdSegmentoX->value());
     ui->viewOpenGL->update();
 }

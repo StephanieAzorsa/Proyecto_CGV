@@ -9,8 +9,6 @@
 #include "torus.h"
 using namespace std;
 
-Torus myTorus(1.5f, 0.8f, 48);
-
 Torus::Torus() {
     prec = 48;
     inner = 1.5f;
@@ -99,7 +97,7 @@ std::vector<glm::vec3> Torus::getStangents() { return sTangents; }
 std::vector<glm::vec3> Torus::getTtangents() { return tTangents; }
 
 
-void Torus::initialize() {
+void Torus::initialize(Torus myTorus) {
 
     QOpenGLFunctions_4_0_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_0_Core>();
 
@@ -141,7 +139,7 @@ void Torus::initialize() {
     f->glBufferData(GL_ELEMENT_ARRAY_BUFFER, ind.size() * 4, &ind[0], GL_STATIC_DRAW);
 }
 
-void Torus::draw() {
+void Torus::draw(Torus myTorus) {
     QOpenGLFunctions_4_0_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_0_Core>();
 
     f->glBindBuffer(GL_ARRAY_BUFFER, VBOt[0]);
